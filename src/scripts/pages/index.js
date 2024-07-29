@@ -45,3 +45,20 @@ async function getPhotographers() {
 
     init();
 }
+//
+// const data = [
+//     {
+//         id : 1,
+//         name: "kevin",
+//         city: "Paris",
+//     },
+//     {
+//         id: 2,
+//         name: "tommy",
+//         city: "Athis",
+//     },
+// ]
+// console.log(data)
+//
+// document.createElement("div");
+
