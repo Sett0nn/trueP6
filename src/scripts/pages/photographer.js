@@ -64,15 +64,20 @@ function createPhotographers(getPhotographerData) {
 
         const NameElement = document.createElement('fullname');
         NameElement.className = 'photographer-name';
+        console.log(NameElement);
 
         const TownElement = document.creatElement("town");
         TownElement.className = 'photographerTown';
+        console.log(TownElement);
 
         const QuoteElement = document.createElement('quote');
         QuoteElement.className = 'PhotographerQuote';
+        console.log(QuoteElement);
+
 
         const TjmElement = document.createElement('div');
         TjmElement.className = 'photographerPrice';
+        console.log(TjmElement);
 
     }
 }
