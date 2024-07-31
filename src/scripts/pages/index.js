@@ -1,22 +1,54 @@
 
-    // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
-    // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-    async function getPhotographers() {
 
- fetch('src/data/photographers.json')
-     .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            const params = new URLSearchParams(window.location.search);
-            console.log(params.get('photographers'));
 
-            const photographersId = parseInt(params.get('photographers_id'));
-            console.log(photographersId);
-        })
+        async function getPhotographers() {
+            try {
+                const response = await fetch('src/data/photographers.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-    }
+                    const data = await response.json();
+                    console.log(data);
 
-    console.log(getPhotographers());
+                const params = new URLSearchParams(window.location.search);
+                const photographersId = parseInt(params.get('photographers_id'));
+                console.log(photographersId);
+
+                for (let i = 0; i < response.length; i++) {
+                    const photographer = response[i];
+                    console.log(photographer);
+
+                    let photographInfo = data.find(element => element.id === photographersId);
+                    console.log(photographInfo);
+
+                    const photographerId = document.createElement('div')
+                    photographerId.classList.add = 'photographer';
+
+
+                    const nameElement = document.createElement("fullname");
+                    nameElement.className = 'name';
+                    photographersId.classList.add('photographerName');
+                    console.log(nameElement);
+
+                    let townElement = document.getElementById("town");
+                    townElement.textContent = photographInfo.localisation;
+                    console.log(townElement);
+
+                    let profilElement = document.getElementById("profil")
+                    profilElement.src = photographInfo.url
+                    console.log(profilElement);
+
+
+
+                }
+                }catch (error){
+                    console.error(error);
+                }
+        }
+
+                console.log(getPhotographers());
+
 
 
     // fetch('scripts/utils/photographer.json')
