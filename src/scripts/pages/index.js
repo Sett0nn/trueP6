@@ -9,37 +9,43 @@
                 }
 
                     const data = await response.json();
-                    console.log(data);
+                    const photographerData = data.photographers;
+
 
                 const params = new URLSearchParams(window.location.search);
                 const photographersId = parseInt(params.get('photographers_id'));
-                console.log(photographersId);
+               const container = document.querySelector('#photographers-container');
 
-                for (let i = 0; i < response.length; i++) {
-                    const photographer = response[i];
+
+
+
+                for (let i = 0; i < photographerData.length; i++) {
+
+                    const photographer = photographerData[i];
                     console.log(photographer);
-
+                    //
                     let photographInfo = data.find(element => element.id === photographersId);
                     console.log(photographInfo);
-
-                    const photographerId = document.createElement('div')
-                    photographerId.classList.add = 'photographer';
-
-
-                    const nameElement = document.createElement("fullname");
-                    nameElement.className = 'name';
-                    photographersId.classList.add('photographerName');
-                    console.log(nameElement);
-
-                    let townElement = document.getElementById("town");
-                    townElement.textContent = photographInfo.localisation;
-                    console.log(townElement);
-
-                    let profilElement = document.getElementById("profil")
-                    profilElement.src = photographInfo.url
-                    console.log(profilElement);
-
-
+                    //
+                    // const photographerId = document.createElement('div')
+                    // photographerId.classList.add = 'photographer';
+                    //
+                    //
+                    // const nameElement = document.createElement("fullname");
+                    // nameElement.className = 'name';
+                    // photographersId.classList.add('photographerName');
+                    // console.log(nameElement);
+                    // nameElement.appendChild(document.createTextNode(photographer));
+                    //
+                    // let townElement = document.getElementById("town");
+                    // townElement.textContent = photographInfo.localisation;
+                    // console.log(townElement);
+                    //
+                    // let profilElement = document.getElementById("profil")
+                    // profilElement.src = photographInfo.url
+                    // console.log(profilElement);
+                    //
+                    // let TjmElement = document.createElementbyId('price');
 
                 }
                 }catch (error){
@@ -47,7 +53,7 @@
                 }
         }
 
-                console.log(getPhotographers());
+              getPhotographers()
 
 
 
