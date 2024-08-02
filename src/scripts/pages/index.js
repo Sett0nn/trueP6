@@ -14,7 +14,7 @@
 
                 const params = new URLSearchParams(window.location.search);
                 const photographersId = parseInt(params.get('photographers_id'));
-               const container = document.querySelector('#photographers-container');
+               const container = document.querySelector('photographers-container');
 
 
 
