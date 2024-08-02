@@ -23,33 +23,46 @@
 
                     const photographer = photographerData[i];
                     console.log(photographer);
+
+                    const photographerDiv = document.createElement('div');
+                    photographerDiv.className = 'photographer-container';
+                    console.log(photographerDiv);
+
+
                     //
                     let photographInfo = data.find(element => element.id === photographersId);
                     console.log(photographInfo);
                     //
-                    // const photographerId = document.createElement('div')
-                    // photographerId.classList.add = 'photographer';
+
                     //
                     //
-                    // const nameElement = document.createElement("fullname");
-                    // nameElement.className = 'name';
-                    // photographersId.classList.add('photographerName');
-                    // console.log(nameElement);
-                    // nameElement.appendChild(document.createTextNode(photographer));
+                    const nameElement = document.createElement("div");
+                    nameElement.className = 'name';
+                    nameElement.textContent = photographer.name;
+                    console.log(nameElement);
+
                     //
-                    // let townElement = document.getElementById("town");
-                    // townElement.textContent = photographInfo.localisation;
-                    // console.log(townElement);
+                    const townElement = document.creatElement("div");
+                    townElement.className = 'town';
+                    townElement.textContent = photographInfo.localisation;
+                    console.log(townElement);
                     //
-                    // let profilElement = document.getElementById("profil")
-                    // profilElement.src = photographInfo.url
-                    // console.log(profilElement);
+                    let profilElement = document.createElement("img")
+                    profilElement.className = 'profil';
+                    profilElement.src = photographInfo.url
+                    console.log(profilElement);
                     //
                     // let TjmElement = document.createElementbyId('price');
 
+                   photographerDiv.appendChild(nameElement);
+                   photographerDiv.appendChild(townElement);
+                   photographerDiv.appendChild(profilElement);
+
+container.appendChild(photographerDiv);
+
                 }
                 }catch (error){
-                    console.error(error);
+                //     console.error(error);
                 }
         }
 
