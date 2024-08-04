@@ -7,7 +7,8 @@ const photographers = {
         "country": "UK",
         "tagline": "Voir le beau dans le quotidien",
         "price": 400,
-        "portrait": "MimiKeel.jpg"
+        "portrait": "src/assets/photographers/MimiKeel.webp",
+        "altname" : "Selfie of Mimi Keel, Photographer from London, UK"
     },
     {
         "name": "Ellie-Rose Wilkens",
@@ -16,7 +17,8 @@ const photographers = {
         "country": "France",
         "tagline": "Capturer des compositions complexes",
         "price": 250,
-        "portrait": "EllieRoseWilkens.jpg"
+        "portrait": "src/assets/photographers/EllieRoseWilkens.webp",
+        "altname" : "Selfie of Ellie-Rose Wilkens, Photographer from Paris, France"
     },
     {
         "name": "Tracy Galindo",
@@ -25,7 +27,8 @@ const photographers = {
         "country": "Canada",
         "tagline": "Photographe freelance",
         "price": 500,
-        "portrait": "TracyGalindo.jpg"
+        "portrait": "src/assets/photographers/TracyGalindo.webp",
+        "altname" : "Selfie of Tracy Galindo, Photographer from Montreal, Canada"
     },
     {
         "name": "Nabeel Bradford",
@@ -34,7 +37,8 @@ const photographers = {
         "country": "Mexico",
         "tagline": "Toujours aller de l'avant",
         "price": 350,
-        "portrait": "NabeelBradford.jpg"
+        "portrait": "src/assets/photographers/NabeelBradford.webp",
+        "altname" : "Selfie of Nabeel Bradford, Photographer from Mexico City, Mexico"
     },
     {
         "name": "Rhode Dubois",
@@ -43,7 +47,8 @@ const photographers = {
         "country": "Spain",
         "tagline": "Je crée des souvenirs",
         "price": 275,
-        "portrait": "RhodeDubois.jpg"
+        "portrait": "src/assets/photographers/RhodeDubois.webp",
+        "altname" : "Selfie of Tracy Galindo, Photographer from Montreal, Canada"
     },
     {
         "name": "Marcel Nikolic",
@@ -52,7 +57,7 @@ const photographers = {
         "country": "Germany",
         "tagline": "Toujours à la recherche de LA photo",
         "price": 300,
-        "portrait": "MarcelNikolic.jpg"
+        "portrait": "src/assets/photographers/MarcelNikolic.webp"
     }
 ],
     "media": [
@@ -594,13 +599,27 @@ const photographers = {
 }
 
 // async function getPhotographers() {
-    // const response = await fetch('src/data/photographers.json');
-    // if (!response.ok) {
-    //     throw new Error(`HTTP error! status: ${response.status}`);
-    // }
+//     const response = await fetch('src/data/photographers.json');
+//     if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+//
+//
+// function loadPhotographers() {
+//     fetch('scripts/utils/photographer.json')
+//     .then(response => response.json())
+//         .then(data => {
+//             const photographers = data.photographers;*
+
+
+
+
     const listElement = document.getElementById('photographers-list')
 
     photographers.photographers.forEach(photographer => {
+
+
+
 
 
         const card = document.createElement('div');
@@ -608,43 +627,58 @@ const photographers = {
 
         const name = document.createElement('h2');
         name.textContent = photographer.name;
+        name.className ='name-photographer';
 
         const img = document.createElement('img');
         img.src = photographer.portrait;
         img.alt = `Portrait de ${photographer.name}`;
 
         const info = document.createElement('div');
+        info.className = 'info-photographer'
 
-        const location = document.createElement('p');
-        location.textContent = photographer.name;
+        const city = document.createElement('div');
+        city.textContent = photographer.city;
+        city.className = 'city-photographer';
 
         const tagline = document.createElement('p');
         tagline.textContent = photographer.tagline;
+        tagline.className = 'tagline-photographer';
 
         const price = document.createElement('p');
         price.textContent = `Prix: $${photographer.price}/jour`;
+        price.className = 'price-photographer';
 
+
+
+
+        // info.appendChild(card);
         info.appendChild(name);
-        info.appendChild(location);
+        info.appendChild(city);
         info.appendChild(tagline);
         info.appendChild(price);
+
 
         card.appendChild(img);
         card.appendChild(info);
 
         listElement.appendChild(card);
+
     });
-
-
-        // listItem.textContent = photographer.name;
-      // listElement.appendChild(listItem);
-      //   });
+// })
+//         .catch(error => console.log(error));
+// }
+// console.log(photographers);
+// document.addEventListener('DOMContentLoaded', loadPhotographers);
+//
+//         listItem.textContent = photographer.name;
+//       listElement.appendChild(listItem);
+//         });
 
 
     // const data = await photographers.json();
     // const photographerData = data.photographers;
     // console.log(photographerData);
-
+    //
     //
     // const params = new URLSearchParams(window.location.search);
     // const photographersId = parseInt(params.get('photographers_id'));

@@ -48,3 +48,52 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+.photographer-card {
+    padding: 10px;
+    margin: 10px;
+
+}
+
+#photographer-card h2 {
+
+}
+
+.photographer-card img {
+
+}
+
+#photographers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#main{
+    width: 0px;
+}
+
+.info-photographer{
+
+}
+
+.name-photographer {
+    display: flex;
+    justify-content: center;
+}
+
+.city-photographer{
+    display: flex;
+    justify-content: center;
+}
+
+.tagline-photographer{
+    display: flex;
+    justify-content: center;
+}
+
+.price-photographer{
+    display: flex;
+    justify-content: center;
+}
