@@ -50,7 +50,7 @@ h1 {
 }
 
 .photographer-card {
-    padding: 10px;
+    padding: 150px;
     margin: 10px;
 
 }
@@ -95,9 +95,8 @@ h1 {
 }
 
 .photographer-card img{
-    width: 200px;
-    height: 200px;
+    width: 300px;
     border: none;
     outline: none;
-    border-radius: 50%; /* Rend l'image ronde */
+    border-radius: 50%;
 }
