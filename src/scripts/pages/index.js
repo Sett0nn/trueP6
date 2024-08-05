@@ -7,7 +7,7 @@ const photographers = {
         "country": "UK",
         "tagline": "Voir le beau dans le quotidien",
         "price": 400,
-        "portrait": "src/assets/photographers/MimiKeel.webp",
+        "portrait": "src/assets/photographers/Mimi-Keel.png",
         "altname" : "Selfie of Mimi Keel, Photographer from London, UK"
     },
     {
@@ -17,7 +17,7 @@ const photographers = {
         "country": "France",
         "tagline": "Capturer des compositions complexes",
         "price": 250,
-        "portrait": "src/assets/photographers/EllieRoseWilkens.webp",
+        "portrait": "src/assets/photographers/Ellie-Rose.png",
         "altname" : "Selfie of Ellie-Rose Wilkens, Photographer from Paris, France"
     },
     {
@@ -27,7 +27,7 @@ const photographers = {
         "country": "Canada",
         "tagline": "Photographe freelance",
         "price": 500,
-        "portrait": "src/assets/photographers/TracyGalindo.webp",
+        "portrait": "src/assets/photographers/Tracy-Galindo.png",
         "altname" : "Selfie of Tracy Galindo, Photographer from Montreal, Canada"
     },
     {
@@ -37,7 +37,7 @@ const photographers = {
         "country": "Mexico",
         "tagline": "Toujours aller de l'avant",
         "price": 350,
-        "portrait": "src/assets/photographers/NabeelBradford.webp",
+        "portrait": "src/assets/photographers/NabeelBradford.png",
         "altname" : "Selfie of Nabeel Bradford, Photographer from Mexico City, Mexico"
     },
     {
@@ -47,7 +47,7 @@ const photographers = {
         "country": "Spain",
         "tagline": "Je crée des souvenirs",
         "price": 275,
-        "portrait": "src/assets/photographers/RhodeDubois.webp",
+        "portrait": "src/assets/photographers/Rhode Dubois.png",
         "altname" : "Selfie of Tracy Galindo, Photographer from Montreal, Canada"
     },
     {
@@ -57,7 +57,7 @@ const photographers = {
         "country": "Germany",
         "tagline": "Toujours à la recherche de LA photo",
         "price": 300,
-        "portrait": "src/assets/photographers/MarcelNikolic.webp"
+        "portrait": "src/assets/photographers/MarcelNikolic.png",
     }
 ],
     "media": [
