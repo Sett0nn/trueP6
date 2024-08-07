@@ -13,17 +13,9 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-
-          <div class="title_position">
-              <span id="photographerName" class="first_title_photographer"></span>
-              <span id="town" class="title_localisation"></span>
-              <span  id="textcontent" class="quote_text">Voir le beau dans le quotidien</span>
-              </div>
-
-
+<div class="photographers-list"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
-        <img id="profil" class="mimi" alt="Mimi Keel"/>
         </div>
         </div>
     </main>
@@ -55,66 +47,15 @@
 			</div>
 		</div>
 
-    <div class="all_picture_gallery" >
+    <div class="all_picture_gallery"></div>
 
-        <div class="img_position">
-            <img id="picture-1"  class="bird" alt="bird"/>
-            <div class="title_under-photo">
-                <span class="pic_under-title" id="counter-1-title">Arc-en-ciel</span>
-                <span class="pic_under-likes" id="counter-1-likes">0</span>
-<!--                <img class="heart" src="assets/icons/heart-solid.svg" onclick="countClicks()"  alt="coeur"/>-->
-                <p id="output"></p>
-            </div>
-        </div>
 
-        <div class="img_position">
-            <img id="picture-2"  class="bird_ditto" alt="Solitude"/>
-            <div class="title_under-photo">
-                <span id="counter-2-title" class="pic_under-title">Solitude</span>
-                <span id="counter-2-likes" class="pic_likes">0</span>
-<!--                <img class="heart" src="assets/icons/heart-solid.svg" onclick="incrementCounter(2)"  alt="coeur"/>-->
-            </div>
-        </div>
 
-        <div class="img_position">
-            <img id="picture-3"  class="bird" alt="Mariage à la mer"/>
-            <div class="title_under-photo">
-                <span id="counter-3-title" class="pic_under-title">Mariage à la mer</span>
-                <span id="counter-3-likes" class="pic_likes">0</span>
-<!--                <img class="heart" src="assets/icons/heart-solid.svg" onclick="incrementCounter(3)"/>-->
-            </div>
-        </div>
 
-        <div class="img_position">
-            <img id="picture-4"  class="bird" alt="Portrait"/>
-            <div class="title_under-photo">
-                <span id="counter-4-title" class="pic_under-title">Portrait</span>
-                <span id="counter-4-likes" class="pic_likes">0</span>
-                <img class="heart" src="assets/icons/heart-solid.svg" onclick="incrementCounter(4)"/>
-            </div>
-        </div>
 
-        <div class="img_position">
-            <img id="picture-5"  class="bird" alt="Ceremonie"/>
-            <div class="title_under-photo">
-                <span id="counter-5-title" class="pic_under-title">Cérémonie</span>
-                <span id="counter-5-likes" class="pic_likes">0</span>
-                <img class="heart" src="assets/icons/heart-solid.svg" onclick="incrementCounter(5)"/>
-            </div>
-        </div>
 
-        <div class="img_position">
-            <img id="picture-6"  class="bird" alt="enfant"/>
-            <div class="title_under-photo">
-                <span id="counter-6-title" class="pic_under-title">Enfant</span>
-                <span id="counter-6-likes" class="pic_likes">0</span>
-                <img class="heart" src="assets/icons/heart-solid.svg" onclick="incrementCounter(6)"/>
-
-            </div>
-        </div>
-
-    </div>
-    <script src="/src/scripts/pages/photographer.js"></script>
-    <script src="/src/scripts/utils/contactForm.js"></script>
+  <script src="src/scripts/templates/photographer.js">
+    <script src="src/scripts/utils/contactForm.js"></script>
+    <script src="path/to/your/script.js" defer></script>
   </body>
 </html>
