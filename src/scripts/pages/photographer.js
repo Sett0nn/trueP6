@@ -629,8 +629,8 @@ const photographers = {
 
 
 const listElement = document.getElementById('photographers-list');
-
-photographers.photographers.forEach(photographer => {
+const media=photographers.media[0]
+// photographers.media.forEach(photographer => {
 
 
 
@@ -640,26 +640,26 @@ photographers.photographers.forEach(photographer => {
     card.className = 'photographer-card';
 
     const name = document.createElement('h2');
-    name.textContent = photographer.name;
+    name.textContent = media.title
     name.className ='name-photographer';
 
     const img = document.createElement('img');
-    img.src = photographer.portrait;
-    img.alt = `Portrait de ${photographer.name}`;
+    img.src = media.image
+    img.alt = `Portrait de ${media.title}`;
 
     const info = document.createElement('div');
     info.className = 'info-photographer'
 
     const city = document.createElement('div');
-    city.textContent = photographer.city;
+    city.textContent = media.id
     city.className = 'city-photographer';
 
     const tagline = document.createElement('p');
-    tagline.textContent = photographer.tagline;
+    tagline.textContent = media.price;
     tagline.className = 'tagline-photographer';
 
     const price = document.createElement('p');
-    price.textContent = `Prix: $${photographer.price}/jour`;
+    price.textContent = `Prix: $${media.price}/jour`;
     price.className = 'price-photographer';
 
 
@@ -677,7 +677,7 @@ photographers.photographers.forEach(photographer => {
 
     listElement.appendChild(card);
 
-});
+// });
 
 // document.addEventListener("DOMContentLoaded", function() {
 //     fetch("src/data/photographers.json")
