@@ -25,7 +25,10 @@
 //        })
 // })
 
-const photographers = {
+const photographId = 243
+// const photographId = parseInt(param.get('photographerId'));
+
+const data = {
     "photographers": [
         {
             "name": "Mimi Keel",
@@ -624,60 +627,50 @@ const photographers = {
         }
     ]
 }
+console.log(data.photographers)
+
+const card = document.createElement('div');
+card.className = 'photographer-card';
 
 
 
+const photographInfo = data.photographers.find(element => element.id === photographId)
+{
+    console.log(photographInfo);
 
-const listElement = document.getElementById('photographers-list');
-const media=photographers.media[0]
-// photographers.media.forEach(photographer => {
-
-
-
-
-
-    const card = document.createElement('div');
-    card.className = 'photographer-card';
+    const listElement = document.getElementById('photographers-banner')
+    const ListImage = document.getElementById("photographers-image");
+    console.log(ListImage)
+    console.log(listElement)
 
     const name = document.createElement('h2');
-    name.textContent = media.title
-    name.className ='name-photographer';
+    name.textContent = photographInfo.name
+
 
     const img = document.createElement('img');
-    img.src = media.image
-    img.alt = `Portrait de ${media.title}`;
-
-    const info = document.createElement('div');
-    info.className = 'info-photographer'
+    img.src = photographInfo.portrait;
+    img.alt = `Portrait de ${photographInfo.name}`;
 
     const city = document.createElement('div');
-    city.textContent = media.id
+    city.textContent = photographInfo.city;
     city.className = 'city-photographer';
 
     const tagline = document.createElement('p');
-    tagline.textContent = media.price;
+    tagline.textContent = photographInfo.tagline;
     tagline.className = 'tagline-photographer';
 
     const price = document.createElement('p');
-    price.textContent = `Prix: $${media.price}/jour`;
+    price.textContent = `Prix: $${photographInfo.price}/jour`;
     price.className = 'price-photographer';
 
+    listElement.appendChild(name);
+    ListImage.appendChild(img);
+    listElement.appendChild(city);
+    listElement.appendChild(tagline);
+    listElement.appendChild(price);
+}
 
 
-
-    // info.appendChild(card);
-    info.appendChild(name);
-    info.appendChild(city);
-    info.appendChild(tagline);
-    info.appendChild(price);
-
-
-    card.appendChild(img);
-    card.appendChild(info);
-
-    listElement.appendChild(card);
-
-// });
 
 // document.addEventListener("DOMContentLoaded", function() {
 //     fetch("src/data/photographers.json")
