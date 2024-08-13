@@ -614,6 +614,7 @@ const photographers = {
 
 
 
+
     const listElement = document.getElementById('photographers-list')
 
     photographers.photographers.forEach(photographer => {

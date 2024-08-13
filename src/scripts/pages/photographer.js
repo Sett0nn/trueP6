@@ -25,8 +25,10 @@
 //        })
 // })
 
-const photographId = 243
-// const photographId = parseInt(param.get('photographerId'));
+// const photographId = 243
+const params = new URLSearchParams(window.location.search);
+const photographId = parseInt(params.get('photographerId'));
+
 
 const data = {
     "photographers": [
@@ -638,6 +640,8 @@ const photographInfo = data.photographers.find(element => element.id === photogr
 {
     console.log(photographInfo);
 
+
+
     const listElement = document.getElementById('photographers-banner')
     const ListImage = document.getElementById("photographers-image");
     console.log(ListImage)
@@ -668,7 +672,28 @@ const photographInfo = data.photographers.find(element => element.id === photogr
     listElement.appendChild(city);
     listElement.appendChild(tagline);
     listElement.appendChild(price);
+
+
+
+    // for (let i = 1; i <= 6; i++) {
+    //     document.getElementById(`picture-${i}`).src = photographInfo.img[i - 1].url;
+    //     document.getElementById(`counter-${i}-title`).textContent = photographInfo.img[i - 1].title;
+    //
+    // }
 }
+
+// on veut récuperer les photos des photograph
+const pictures = data.media.filter(element => {
+    return  element.photographerId === photographId
+
+})
+
+
+
+    console.log(pictures)
+    const listPhoto = document.getElementById('photo-list')
+    console.log(listPhoto)
+
 
 
 
