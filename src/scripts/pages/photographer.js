@@ -629,7 +629,7 @@ const data = {
         }
     ]
 }
-console.log(data.photographers)
+
 
 const card = document.createElement('div');
 card.className = 'photographer-card';
@@ -638,14 +638,13 @@ card.className = 'photographer-card';
 
 const photographInfo = data.photographers.find(element => element.id === photographId)
 {
-    console.log(photographInfo);
+
 
 
 
     const listElement = document.getElementById('photographers-banner')
     const ListImage = document.getElementById("photographers-image");
-    console.log(ListImage)
-    console.log(listElement)
+
 
     const name = document.createElement('h2');
     name.textContent = photographInfo.name
@@ -654,6 +653,7 @@ const photographInfo = data.photographers.find(element => element.id === photogr
     const img = document.createElement('img');
     img.src = photographInfo.portrait;
     img.alt = `Portrait de ${photographInfo.name}`;
+    img.style.width = '280px';
 
     const city = document.createElement('div');
     city.textContent = photographInfo.city;
@@ -671,7 +671,7 @@ const photographInfo = data.photographers.find(element => element.id === photogr
     ListImage.appendChild(img);
     listElement.appendChild(city);
     listElement.appendChild(tagline);
-    listElement.appendChild(price);
+    // listElement.appendChild(price);
 
 
 
@@ -683,16 +683,43 @@ const photographInfo = data.photographers.find(element => element.id === photogr
 }
 
 // on veut récuperer les photos des photograph
-const pictures = data.media.filter(element => {
-    return  element.photographerId === photographId
+const pictures = data.media.filter(element =>  element.photographerId === photographId);
 
-})
-
+const ImagePhoto = document.getElementById("image-photo");
 
 
-    console.log(pictures)
-    const listPhoto = document.getElementById('photo-list')
-    console.log(listPhoto)
+
+pictures.forEach(picture => {
+    const imgElement = document.createElement('img');
+
+console.log(picture)
+
+    for (let i = 0; i < picture.length; i++) {
+        const photos = document.createElement('img');
+        photos.src =  picture.image;
+
+        ImagePhoto.appendChild(imgElement);
+console.log(imgElement)
+    }
+    imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
+console.log("src/assets/images/930/Architecture_Connected_Curves.jpg/",  imgElement.src )
+    imgElement.alt = picture.title;
+
+
+    ImagePhoto.appendChild(imgElement);
+
+    console.log(imgElement)
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
