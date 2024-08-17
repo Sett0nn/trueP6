@@ -691,12 +691,13 @@ const ImagePhoto = document.getElementById("image-photo");
 
 pictures.forEach(picture => {
     const imgElement = document.createElement('img');
-
+    imgElement.style.width = '280px';
 console.log(picture)
 
     for (let i = 0; i < picture.length; i++) {
         const photos = document.createElement('img');
         photos.src =  picture.image;
+
 
         ImagePhoto.appendChild(imgElement);
 console.log(imgElement)
