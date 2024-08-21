@@ -1,65 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="src/css/style.css" rel="stylesheet" type="text/css" />
+<head>
+    <link href="src/css/style.css" rel="stylesheet" type="text/css"/>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="src/assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="src/assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-        <div class="photographer-form">
-      <div class="photograph-header">
-          <div id="photographers-banner"></div>
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-          <div id="photographers-image"></div>
-      </div>
-</div>
-            <div id="image-photo"></div>
+</head>
+<body>
+<header>
+    <img src="src/assets/images/logo.png" class="logo" alt=""/>
+</header>
+<main id="main">
+    <div class="photographer-form">
+        <div class="photograph-header">
+            <div id="photographers-banner"></div>
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <div id="photographers-image"></div>
+        </div>
+    </div>
 
+
+
+
+
+
+    <div id="container-photo">
+        <div class="picture-container">
+            <img class="picture-image" src="src/assets/images/243/Travel_Lonesome.jpg" alt="Lonesome">
+            <div class="picture-details">
+                <div> loremipsumaadadadadaa </div>
+                <div> 10 likes</div>
+            </div>
         </div>
-        </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="src/assets/icons/close.svg" onclick="closeModal()" />
+
+
+
+
+
+    </div>
+
+</main>
+<div id="contact_modal">
+    <div class="modal">
+        <header>
+            <h2>Contactez-moi</h2>
+            <img src="src/assets/icons/close.svg" onclick="closeModal()" alt=""/>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-                        <input id="first-name" type="text">
-					</div>
-                    <div>
-                        <label for="last-name">Nom</label>
-                        <input id="last-name" type="text">
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input id="email" type="text">
-                    </div>
-                    <div class="message-container">
-                        <label for="message">Votre message</label>
-                        <textarea id="message"></textarea>
-                    </div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form>
+            <div>
+                <label>Prénom</label>
+                <input id="first-name" type="text">
+            </div>
+            <div>
+                <label for="last-name">Nom</label>
+                <input id="last-name" type="text">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="text">
+            </div>
+            <div class="message-container">
+                <label for="message">Votre message</label>
+                <textarea id="message"></textarea>
+            </div>
+            <button class="contact_button">Envoyer</button>
+        </form>
+    </div>
+</div>
 
-    <div class="photo-list"></div>
-
-
+<div class="photo-list"></div>
 
 
-
-
-  <script src="src/scripts/pages/photographer.js"></script>
-    <script src="src/scripts/utils/contactForm.js"></script>
-  </body>
+<script src="src/scripts/pages/photographer.js"></script>
+<script src="src/scripts/utils/contactForm.js"></script>
+</body>
 </html>

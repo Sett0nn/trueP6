@@ -684,41 +684,57 @@ const photographInfo = data.photographers.find(element => element.id === photogr
 
 // on veut récuperer les photos des photograph
 const pictures = data.media.filter(element =>  element.photographerId === photographId);
+console.log(pictures)
+const ImagePhoto = document.getElementById("container-photo");
+const PhotoStyle = document.getElementById("photo-style");
+console.log(PhotoStyle);
+console.log(ImagePhoto);
 
-const ImagePhoto = document.getElementById("image-photo");
 
 
 
 pictures.forEach(picture => {
-    const imgElement = document.createElement('img');
-    imgElement.style.width = '280px';
-console.log(picture)
-
-    for (let i = 0; i < picture.length; i++) {
-        const photos = document.createElement('img');
-        photos.src =  picture.image;
+const
 
 
-        ImagePhoto.appendChild(imgElement);
-console.log(imgElement)
-    }
-    imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
-console.log("src/assets/images/930/Architecture_Connected_Curves.jpg/",  imgElement.src )
-    imgElement.alt = picture.title;
 
 
-    ImagePhoto.appendChild(imgElement);
 
-    console.log(imgElement)
+
+
+
+    // container-photo.appenchild(picture-container)
+    // picture-container.appenchild(picture-image)
+    // picture-container.appenchild(picture-details)
+    // picture-details.appenchild(picture-title)
+    // picture-details.appenchild(picture-like)
+
+//     const imgElement = document.createElement('img');
+//     imgElement.style.width = '280px';
+//     // imgElement.style.display = 'block';
+//     const pictureContainer = document.createElement('div');
+// console.log(pictureContainer)
+
+    // for (let i = 0; i < picture.length; i++) {
+    //     const photos = document.createElement('img');
+    //     photos.src =  picture.image;
+    //
+    //
+    //
+    // }
+    // imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
+    //
+    // imgElement.alt = picture.title;
+    //
+    //
+    // ImagePhoto.appendChild(imgElement);
+    // pictureContainer.appendChild(imgElement);
+
+
+
+
+
 });
-
-
-
-
-
-
-
-
 
 
 
