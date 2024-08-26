@@ -633,21 +633,27 @@ const data = {
 
 const card = document.createElement('div');
 card.className = 'photographer-card';
-
+console.log(card)
 
 
 const photographInfo = data.photographers.find(element => element.id === photographId)
-{
-
+console.log(photographInfo)
+console.log(photographId)
 
 
 
     const listElement = document.getElementById('photographers-banner')
+
     const ListImage = document.getElementById("photographers-image");
 
 
     const name = document.createElement('h2');
+    console.log(photographInfo)
     name.textContent = photographInfo.name
+
+    console.log(name.textContent)
+
+
 
 
     const img = document.createElement('img');
@@ -671,7 +677,7 @@ const photographInfo = data.photographers.find(element => element.id === photogr
     ListImage.appendChild(img);
     listElement.appendChild(city);
     listElement.appendChild(tagline);
-    // listElement.appendChild(price);
+    listElement.appendChild(price);
 
 
 
@@ -680,7 +686,7 @@ const photographInfo = data.photographers.find(element => element.id === photogr
     //     document.getElementById(`counter-${i}-title`).textContent = photographInfo.img[i - 1].title;
     //
     // }
-}
+
 
 // on veut récuperer les photos des photograph
 const pictures = data.media.filter(element =>  element.photographerId === photographId);
@@ -694,7 +700,38 @@ console.log(ImagePhoto);
 
 
 pictures.forEach(picture => {
-const
+const containerPhoto = document.getElementById('container-photo');
+const PictureContainer = document.createElement('div');
+PictureContainer.className = 'picture-container';
+    const PictureImage = document.createElement('img');
+    PictureImage.src = "src/assets/images/"+photographId+"/"+ picture.image;
+    console.log(picture.image)
+
+    PictureImage.alt = picture.title;
+    const pictureDetails = document.createElement('div');
+    pictureDetails.className = 'picture-details';
+    const detailTitle = document.createElement('div');
+    detailTitle.textContent = picture.title;
+    const detailLike= document.createElement('div');
+     detailLike.textContent = '10 likes';
+
+    const pictureVideo = document.createElement('video');
+    pictureVideo.controls = true;
+    pictureVideo.muted = true;
+    pictureVideo.autoplay = true;
+    pictureVideo.loop = true;
+    pictureVideo.getElementById = 'picture-video';
+    const sourceVideo = document.createElement('source');
+    sourceVideo.src = "src/assets/images/"+photographId+"/"+ picture.video;
+    sourceVideo.type = 'video/mp4';
+
+    pictureVideo.appendChild(sourceVideo)
+    listElement.appendChild(pictureVideo)
+    containerPhoto.appendChild(PictureContainer);
+    PictureContainer.appendChild(PictureImage);
+    PictureContainer.appendChild(pictureDetails);
+    pictureDetails.appendChild(detailTitle);
+    pictureDetails.appendChild(detailLike);
 
 
 
@@ -703,32 +740,26 @@ const
 
 
 
-    // container-photo.appenchild(picture-container)
-    // picture-container.appenchild(picture-image)
-    // picture-container.appenchild(picture-details)
-    // picture-details.appenchild(picture-title)
-    // picture-details.appenchild(picture-like)
+    const imgElement = document.createElement('img');
+    imgElement.style.width = '280px';
+    // imgElement.style.display = 'block';
+    const pictureContainer = document.createElement('div');
+console.log(pictureContainer)
 
-//     const imgElement = document.createElement('img');
-//     imgElement.style.width = '280px';
-//     // imgElement.style.display = 'block';
-//     const pictureContainer = document.createElement('div');
-// console.log(pictureContainer)
+    for (let i = 0; i < picture.length; i++) {
+        const photos = document.createElement('img');
+        photos.src =  picture.image;
 
-    // for (let i = 0; i < picture.length; i++) {
-    //     const photos = document.createElement('img');
-    //     photos.src =  picture.image;
-    //
-    //
-    //
-    // }
-    // imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
-    //
-    // imgElement.alt = picture.title;
-    //
-    //
-    // ImagePhoto.appendChild(imgElement);
-    // pictureContainer.appendChild(imgElement);
+
+
+    }
+    imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
+
+    imgElement.alt = picture.title;
+
+
+    ImagePhoto.appendChild(imgElement);
+    pictureContainer.appendChild(imgElement);
 
 
 

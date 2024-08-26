@@ -112,6 +112,7 @@
 .picture-details{
     display: flex;
     justify-content: space-between;
+    width: 100px;
 }
 
 .picture-likes{
@@ -123,5 +124,8 @@
     height: 300px;
 }
 
+.picture-video{
+    width: 350px;
+}
 
 
