@@ -704,8 +704,9 @@ const containerPhoto = document.getElementById('container-photo');
 const PictureContainer = document.createElement('div');
 PictureContainer.className = 'picture-container';
     const PictureImage = document.createElement('img');
-    PictureImage.src = "src/assets/images/"+photographId+"/"+ picture.image;
-    console.log(picture.image)
+    const fileName = picture.video || picture.image
+    PictureImage.src = "src/assets/images/"+photographId+"/"+ fileName;
+
 
     PictureImage.alt = picture.title;
     const pictureDetails = document.createElement('div');
@@ -715,18 +716,45 @@ PictureContainer.className = 'picture-container';
     const detailLike= document.createElement('div');
      detailLike.textContent = '10 likes';
 
-    const pictureVideo = document.createElement('video');
-    pictureVideo.controls = true;
-    pictureVideo.muted = true;
-    pictureVideo.autoplay = true;
-    pictureVideo.loop = true;
-    pictureVideo.getElementById = 'picture-video';
-    const sourceVideo = document.createElement('source');
-    sourceVideo.src = "src/assets/images/"+photographId+"/"+ picture.video;
-    sourceVideo.type = 'video/mp4';
 
-    pictureVideo.appendChild(sourceVideo)
-    listElement.appendChild(pictureVideo)
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
+  console.log(fileExtension)
+    if (typeMedia === "VIDEO") {
+        const pictureVideo = document.createElement('video');
+        pictureVideo.className = 'picture-video';
+        pictureVideo.controls = true;
+        listElement.appendChild(pictureVideo);
+
+
+        const sourceVideo = document.createElement('source');
+        sourceVideo.src = "src/assets/images/" + photographId + "/" + fileName;
+        sourceVideo.type = `video/${fileExtension}`;
+        pictureVideo.appendChild(sourceVideo);
+
+    } else if (typeMedia === "IMAGE") {
+        const pictureImage = document.createElement('img');
+        pictureImage.className = 'picture-image';
+        pictureImage.src = "src/assets/images/" + photographId + "/" + fileName;
+        pictureImage.alt = `Image de ${photographInfo.name}`;
+
+    }
+
+
+
+
+    // const pictureVideo = document.createElement('video');
+    // pictureVideo.controls = true;
+    // pictureVideo.muted = true;
+    // pictureVideo.autoplay = true;
+    // pictureVideo.loop = true;
+    // pictureVideo.getElementById = 'picture-video';
+    // const sourceVideo = document.createElement('source');
+    // sourceVideo.src = "src/assets/images/"+photographId+"/"+ picture.video;
+    // sourceVideo.type = 'video/mp4';
+    //
+
+
     containerPhoto.appendChild(PictureContainer);
     PictureContainer.appendChild(PictureImage);
     PictureContainer.appendChild(pictureDetails);
