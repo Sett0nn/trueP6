@@ -25,10 +25,10 @@
 //        })
 // })
 
-// const photographId = 243
+
 const params = new URLSearchParams(window.location.search);
 const photographId = parseInt(params.get('photographerId'));
-
+console.log(photographId, params.get('photographerId'));
 
 const data = {
     "photographers": [
@@ -533,6 +533,7 @@ const data = {
             "photographerId": 930,
             "title": "Tricks in te air",
             "video": "Sport_Tricks_in_the_air.mp4",
+            // "image": "Sport_Tricks_in_the_air.jpg",
             "likes": 150,
             "date": "2018-02-30",
             "price": 70
@@ -637,8 +638,8 @@ console.log(card)
 
 
 const photographInfo = data.photographers.find(element => element.id === photographId)
-console.log(photographInfo)
-console.log(photographId)
+console.log(photographInfo, photographId)
+
 
 
 
@@ -646,11 +647,15 @@ console.log(photographId)
 
     const ListImage = document.getElementById("photographers-image");
 
+    const [photographerHeader] = document.getElementsByClassName("photograph-header");
+
 
     const name = document.createElement('h2');
     console.log(photographInfo)
     name.textContent = photographInfo.name
-
+    name.style.fontSize = '50px';
+    name.style.color = '#D3573C' ;
+    name.style.fontFamily = 'DM Sans'
     console.log(name.textContent)
 
 
@@ -660,6 +665,10 @@ console.log(photographId)
     img.src = photographInfo.portrait;
     img.alt = `Portrait de ${photographInfo.name}`;
     img.style.width = '280px';
+    img.style.height = '230px';
+    img.style.objectFit = 'cover';
+    img.style.display = 'block';
+    img.style.overflow = 'hidden';
 
     const city = document.createElement('div');
     city.textContent = photographInfo.city;
@@ -673,7 +682,10 @@ console.log(photographId)
     price.textContent = `Prix: $${photographInfo.price}/jour`;
     price.className = 'price-photographer';
 
-    listElement.appendChild(name);
+
+photographerHeader.insertBefore(name, photographerHeader.firstChild);
+name.insertAdjacentElement("afterend", img);
+// city.insertAdjacentElement("afterend", );
     ListImage.appendChild(img);
     listElement.appendChild(city);
     listElement.appendChild(tagline);
@@ -725,6 +737,7 @@ PictureContainer.className = 'picture-container';
         pictureVideo.className = 'picture-video';
         pictureVideo.controls = true;
         listElement.appendChild(pictureVideo);
+        PictureContainer.appendChild(listElement)
 
 
         const sourceVideo = document.createElement('source');
@@ -732,12 +745,14 @@ PictureContainer.className = 'picture-container';
         sourceVideo.type = `video/${fileExtension}`;
         pictureVideo.appendChild(sourceVideo);
 
+
     } else if (typeMedia === "IMAGE") {
+        console.log("filename",fileName);
         const pictureImage = document.createElement('img');
         pictureImage.className = 'picture-image';
         pictureImage.src = "src/assets/images/" + photographId + "/" + fileName;
         pictureImage.alt = `Image de ${photographInfo.name}`;
-
+        PictureContainer.appendChild(PictureImage);
     }
 
 
@@ -756,7 +771,7 @@ PictureContainer.className = 'picture-container';
 
 
     containerPhoto.appendChild(PictureContainer);
-    PictureContainer.appendChild(PictureImage);
+
     PictureContainer.appendChild(pictureDetails);
     pictureDetails.appendChild(detailTitle);
     pictureDetails.appendChild(detailLike);
@@ -768,26 +783,11 @@ PictureContainer.className = 'picture-container';
 
 
 
-    const imgElement = document.createElement('img');
-    imgElement.style.width = '280px';
-    // imgElement.style.display = 'block';
-    const pictureContainer = document.createElement('div');
-console.log(pictureContainer)
-
-    for (let i = 0; i < picture.length; i++) {
-        const photos = document.createElement('img');
-        photos.src =  picture.image;
 
 
 
-    }
-    imgElement.src = "src/assets/images/"+photographId+"/"+ picture.image;
-
-    imgElement.alt = picture.title;
-
-
-    ImagePhoto.appendChild(imgElement);
-    pictureContainer.appendChild(imgElement);
+    // ImagePhoto.appendChild(imgElement);
+    // pictureContainer.appendChild(imgElement);
 
 
 
