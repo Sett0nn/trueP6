@@ -136,7 +136,28 @@
     width: 350px;
 }
 
-.banner-style{
+.header-name {
+    font-size: 50px;
+    color: #D3573C;
+    font-family: "DM Sans";
+}
+
+.style-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-form{
+
+
 
 }
+
+/*width: 200px;*/
+/*    height: 230px;*/
+/*    object-fit: cover;*/
+/*    display:  block;*/
+/*    overflow: hidden;*/
+
 

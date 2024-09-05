@@ -650,14 +650,32 @@ console.log(photographInfo, photographId)
     const [photographerHeader] = document.getElementsByClassName("photograph-header");
 
 
-    const name = document.createElement('h2');
-    console.log(photographInfo)
-    name.textContent = photographInfo.name
-    name.style.fontSize = '50px';
-    name.style.color = '#D3573C' ;
-    name.style.fontFamily = 'DM Sans'
-    console.log(name.textContent)
+    const photographDetails = document.createElement('div');
+photographDetails.className = 'photograph-details';
+    const headerName = document.createElement("div");
+    headerName.className = 'header-name';
+    headerName.textContent = photographInfo.name;
+    // photographerHeader.appendChild(photographDetails);
+    photographerHeader.appendChild(headerName);
 
+    const contactButton = document.getElementsByClassName("contact_button");
+contactButton.onclick = function (){displayModal};
+
+    const Detailslocation = document.createElement('div');
+Detailslocation.className = 'photograph-details';
+    const locationForm = document.createElement('div')
+locationForm.className = 'location-form';
+Detailslocation.textContent = photographInfo.city
+photographerHeader.appendChild(Detailslocation);
+
+
+    // name.className = 'header-name'
+    // console.log(photographInfo)
+    // name.textContent = photographInfo.name
+    // name.style.fontSize = '50px';
+    // name.style.color = '#D3573C' ;
+    // name.style.fontFamily = 'DM Sans'
+    // console.log(name.textContent)
 
 
 
@@ -669,10 +687,14 @@ console.log(photographInfo, photographId)
     img.style.objectFit = 'cover';
     img.style.display = 'block';
     img.style.overflow = 'hidden';
+    photographerHeader.appendChild(img)
 
-    const city = document.createElement('div');
-    city.textContent = photographInfo.city;
-    city.className = 'city-photographer';
+    const photographForm = document.getElementById('div');
+    // photographForm.
+
+    // const city = document.createElement('div');
+    // city.textContent = photographInfo.city;
+    // city.className = 'city-photographer';
 
     const tagline = document.createElement('p');
     tagline.textContent = photographInfo.tagline;
@@ -683,13 +705,14 @@ console.log(photographInfo, photographId)
     price.className = 'price-photographer';
 
 
-photographerHeader.insertBefore(name, photographerHeader.firstChild);
-name.insertAdjacentElement("afterend", img);
+// photographerHeader.insertBefore(name, photographerHeader.firstChild);
+// name.insertAdjacentElement("afterend", img);
 // city.insertAdjacentElement("afterend", );
-    ListImage.appendChild(img);
-    listElement.appendChild(city);
-    listElement.appendChild(tagline);
-    listElement.appendChild(price);
+// photographerHeader.appendChild(name);
+//     ListImage.appendChild(img);
+// photographerHeader.appendChild(city);
+// photographerHeader.appendChild(tagline);
+//     // listElement.appendChild(price);
 
 
 
@@ -771,15 +794,24 @@ PictureContainer.className = 'picture-container';
 
 
     containerPhoto.appendChild(PictureContainer);
-
     PictureContainer.appendChild(pictureDetails);
     pictureDetails.appendChild(detailTitle);
     pictureDetails.appendChild(detailLike);
 
 
 
+    function setPicturesCounters(pictures, userLikedPictures) {
+        let globalLikes = 0;
 
+        pictures.forEach(picture => {
+            globalLikes += picture.likes;
+            if (userLikedPictures.includes(picture.id)) {
+                document.getElementById(`picture-${picture.id}`).style.opacity = ACTIVE_OPACITY;
+            }
+        });
 
+        document.getElementById(GLOBAL_COUNTER_ELEMENT_ID).textContent = globalLikes;
+    }
 
 
 
