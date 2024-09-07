@@ -650,23 +650,39 @@ console.log(photographInfo, photographId)
     const [photographerHeader] = document.getElementsByClassName("photograph-header");
 
 
+    const photographerForm = document.createElement('div');
+    photographerForm.className = 'photographer-form';
+    photographerHeader.appendChild(photographerForm)
+
     const photographDetails = document.createElement('div');
 photographDetails.className = 'photograph-details';
     const headerName = document.createElement("div");
     headerName.className = 'header-name';
     headerName.textContent = photographInfo.name;
     // photographerHeader.appendChild(photographDetails);
-    photographerHeader.appendChild(headerName);
+photographerForm.appendChild(headerName);
 
-    const contactButton = document.getElementsByClassName("contact_button");
-contactButton.onclick = function (){displayModal};
+
+const button = document.createElement('button');
+button.className = 'contact_button';
+button.textContent = 'Contactez-moi';
+button.style.margin = '90px' ;
+
+button.addEventListener('click', function() {
+    displayModal();
+});
+photographerHeader.appendChild(button);
+
+function displayModal() {
+    alert('Le modal s\'affichera ici.');
+}
 
     const Detailslocation = document.createElement('div');
 Detailslocation.className = 'photograph-details';
     const locationForm = document.createElement('div')
 locationForm.className = 'location-form';
 Detailslocation.textContent = photographInfo.city
-photographerHeader.appendChild(Detailslocation);
+photographerForm.appendChild(Detailslocation);
 
 
     // name.className = 'header-name'
@@ -682,11 +698,12 @@ photographerHeader.appendChild(Detailslocation);
     const img = document.createElement('img');
     img.src = photographInfo.portrait;
     img.alt = `Portrait de ${photographInfo.name}`;
-    img.style.width = '280px';
     img.style.height = '230px';
     img.style.objectFit = 'cover';
     img.style.display = 'block';
     img.style.overflow = 'hidden';
+    img.style.borderRadius = '50%';
+    img.style.marginTop = '30px';
     photographerHeader.appendChild(img)
 
     const photographForm = document.getElementById('div');
@@ -699,6 +716,7 @@ photographerHeader.appendChild(Detailslocation);
     const tagline = document.createElement('p');
     tagline.textContent = photographInfo.tagline;
     tagline.className = 'tagline-photographer';
+photographerForm.appendChild(tagline)
 
     const price = document.createElement('p');
     price.textContent = `Prix: $${photographInfo.price}/jour`;

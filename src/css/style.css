@@ -84,7 +84,7 @@ h1 {
 
 .tagline-photographer{
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
 
 .price-photographer{

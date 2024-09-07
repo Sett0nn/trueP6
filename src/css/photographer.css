@@ -10,7 +10,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 300px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -115,6 +115,13 @@
     gap: 5px;
     width: 600px;
 }
+
+.picture-container img{
+    width: 90%;
+    height: 80%;
+}
+
+
 .picture-details{
     display: flex;
     justify-content: space-between;
@@ -133,7 +140,15 @@
 }
 
 .picture-video{
-    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 600px;
+}
+
+.picture-video img{
+    width: 90%;
+    height: 80%;
 }
 
 .header-name {
@@ -148,10 +163,14 @@
     justify-content: center;
 }
 
-.header-form{
+.tagline-photographer{
+    display: flex;
+    justify-content: left;
+}
 
-
-
+.photographer-form {
+    margin-right: 156px;
+    margin-top: 60px;
 }
 
 /*width: 200px;*/
