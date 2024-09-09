@@ -117,7 +117,7 @@
 }
 
 .picture-container img{
-    width: 90%;
+    width: 80%;
     height: 80%;
 }
 
@@ -125,7 +125,7 @@
 .picture-details{
     display: flex;
     justify-content: space-between;
-    width: 580px;
+    width: 530px;
     font-size: xx-large;
     color: #901C1C;
 }
@@ -173,6 +173,18 @@
     margin-top: 60px;
 }
 
+.heart-detail {
+    max-width: 40px;
+}
+.like-details{
+    display: flex;
+    flex-direction: row;
+    margin-right: 60px;
+}
+
+.detail-like{
+    margin-right: 20px;
+}
 /*width: 200px;*/
 /*    height: 230px;*/
 /*    object-fit: cover;*/

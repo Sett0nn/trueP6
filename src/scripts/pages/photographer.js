@@ -645,7 +645,7 @@ console.log(photographInfo, photographId)
 
     const listElement = document.getElementById('photographers-banner')
 
-    const ListImage = document.getElementById("photographers-image");
+    // const ListImage = document.getElementById("photographers-image");
 
     const [photographerHeader] = document.getElementsByClassName("photograph-header");
 
@@ -706,7 +706,7 @@ photographerForm.appendChild(Detailslocation);
     img.style.marginTop = '30px';
     photographerHeader.appendChild(img)
 
-    const photographForm = document.getElementById('div');
+    // const photographForm = document.getElementById('div');
     // photographForm.
 
     // const city = document.createElement('div');
@@ -764,10 +764,16 @@ PictureContainer.className = 'picture-container';
     PictureImage.alt = picture.title;
     const pictureDetails = document.createElement('div');
     pictureDetails.className = 'picture-details';
+    const likeDetails = document.createElement('div');
+    likeDetails.className = 'like-details';
     const detailTitle = document.createElement('div');
     detailTitle.textContent = picture.title;
     const detailLike= document.createElement('div');
-     detailLike.textContent = '10 likes';
+    const heartRed = document.createElement('img');
+    heartRed.className = 'heart-detail';
+    heartRed.src = "src/assets/icons/heart-solid.svg";
+    detailLike.textContent = picture.likes ;
+    detailLike.className = 'detail-like';
 
 
     const fileExtension = fileName.split('.').pop().toLowerCase();
@@ -779,6 +785,7 @@ PictureContainer.className = 'picture-container';
         pictureVideo.controls = true;
         listElement.appendChild(pictureVideo);
         PictureContainer.appendChild(listElement)
+
 
 
         const sourceVideo = document.createElement('source');
@@ -814,14 +821,26 @@ PictureContainer.className = 'picture-container';
     containerPhoto.appendChild(PictureContainer);
     PictureContainer.appendChild(pictureDetails);
     pictureDetails.appendChild(detailTitle);
-    pictureDetails.appendChild(detailLike);
+    likeDetails.appendChild(detailLike);
+    pictureDetails.appendChild(likeDetails);
+    likeDetails.appendChild(heartRed)
+    const ACTIVE_OPACITY = '1';
+    const GLOBAL_COUNTER_ELEMENT_ID = 'global-likes';
 
 
 
-    function setPicturesCounters(pictures, userLikedPictures) {
+
+    // for (let i = 1; i <= 6; i++) {
+    //     document.getElementById(`picture-${i}`).src = photographInfo.pictures[i - 1].url;
+    //
+    //     document.getElementById(`counter-${i}-title`).textContent = photographInfo.pictures[i - 1].title;
+    //
+    //     document.getElementById(`counter-${i}-likes`).textContent = photographInfo.pictures[i - 1].likes;
+
+    function setPicturesCounters(picture, userLikedPictures) {
         let globalLikes = 0;
 
-        pictures.forEach(picture => {
+        picture.forEach(picture => {
             globalLikes += picture.likes;
             if (userLikedPictures.includes(picture.id)) {
                 document.getElementById(`picture-${picture.id}`).style.opacity = ACTIVE_OPACITY;
@@ -830,7 +849,7 @@ PictureContainer.className = 'picture-container';
 
         document.getElementById(GLOBAL_COUNTER_ELEMENT_ID).textContent = globalLikes;
     }
-
+console.log(setPicturesCounters)
 
 
 
