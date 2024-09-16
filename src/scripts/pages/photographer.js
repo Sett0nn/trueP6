@@ -768,8 +768,30 @@ PictureContainer.className = 'picture-container';
     likeDetails.className = 'like-details';
     const detailTitle = document.createElement('div');
     detailTitle.textContent = picture.title;
+    let likeCount = picture.likes;
     const detailLike= document.createElement('div');
     const heartRed = document.createElement('img');
+
+    // document.getElementById('like-button').addEventListener("click",function()  {
+    //     fetch(pictures.likes)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const postTitle = data.post.titles;
+    //             const likeCount = data.likes.likes;
+    //
+    //             document.getElementById('like-count').innerHTML = likeCount;
+    //
+    //             document.getElementById('')
+    //
+    //             console.log(postTitle)
+    //
+    //
+    //         })
+    //     likeCount++;
+    //     document.getElementById('like-count').innerText = likeCount;
+    //
+    // });
+
     heartRed.className = 'heart-detail';
     heartRed.src = "src/assets/icons/heart-solid.svg";
     detailLike.textContent = picture.likes ;
@@ -803,7 +825,24 @@ PictureContainer.className = 'picture-container';
         PictureContainer.appendChild(PictureImage);
     }
 
+    const NavBar = document.createElement('div');
+    NavBar.className = 'nav-bar';
+    const Heart = document.createElement('img');
+    const buttonHeader = document.createElement('div');
+    buttonHeader.className='button-header';
+    const Tjm = document.createElement('span');
+    Tjm.textContent = "300€/jour"
 
+    const photoList= document.createElement('div');
+    // photolist.getElementById = 'photo-list';
+
+
+
+
+    photoList.appendChild(NavBar);
+    photoList.appendChild(buttonHeader);
+    NavBar.appendChild(Heart);
+    buttonHeader.appendChild(Tjm);
 
 
     // const pictureVideo = document.createElement('video');
@@ -815,7 +854,7 @@ PictureContainer.className = 'picture-container';
     // const sourceVideo = document.createElement('source');
     // sourceVideo.src = "src/assets/images/"+photographId+"/"+ picture.video;
     // sourceVideo.type = 'video/mp4';
-    //
+
 
 
     containerPhoto.appendChild(PictureContainer);
@@ -823,9 +862,9 @@ PictureContainer.className = 'picture-container';
     pictureDetails.appendChild(detailTitle);
     likeDetails.appendChild(detailLike);
     pictureDetails.appendChild(likeDetails);
-    likeDetails.appendChild(heartRed)
-    const ACTIVE_OPACITY = '1';
-    const GLOBAL_COUNTER_ELEMENT_ID = 'global-likes';
+    likeDetails.appendChild(heartRed);
+    // const ACTIVE_OPACITY = '1';
+    // const GLOBAL_COUNTER_ELEMENT_ID = 'global-likes';
 
 
 
@@ -837,24 +876,28 @@ PictureContainer.className = 'picture-container';
     //
     //     document.getElementById(`counter-${i}-likes`).textContent = photographInfo.pictures[i - 1].likes;
 
-    function setPicturesCounters(picture, userLikedPictures) {
-        let globalLikes = 0;
+//     function setPicturesCounters(pictures, pictureImage) {
+//         let globalLikes = 0 ;
+//
+//         picture.forEach(pictures => {
+//             globalLikes += pictures.likes;
+//             if (pictureImage.includes(pictures.id)) {
+//                 document.getElementById(`picture-${pictures.id}`).style.opacity = ACTIVE_OPACITY;
+//             }
+//         });
+//
+//         document.getElementById(GLOBAL_COUNTER_ELEMENT_ID).textContent = globalLikes;
+//     }
+// console.log(setPicturesCounters)
 
-        picture.forEach(picture => {
-            globalLikes += picture.likes;
-            if (userLikedPictures.includes(picture.id)) {
-                document.getElementById(`picture-${picture.id}`).style.opacity = ACTIVE_OPACITY;
-            }
-        });
-
-        document.getElementById(GLOBAL_COUNTER_ELEMENT_ID).textContent = globalLikes;
-    }
-console.log(setPicturesCounters)
-
-
-
-
-
+    // let count = 0;
+    // let output = document.getElementById("output");
+    // function countClicks() {
+    //     count = count + 1;
+    //     output.innerHTML = count;
+    // }
+    //
+    //
     // ImagePhoto.appendChild(imgElement);
     // pictureContainer.appendChild(imgElement);
 
