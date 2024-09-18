@@ -630,7 +630,9 @@ const data = {
         }
     ]
 }
-
+console.log(data.media[0].likes)
+data.media[0].likes++
+console.log(data.media[0].likes)
 
 const card = document.createElement('div');
 card.className = 'photographer-card';
@@ -772,30 +774,20 @@ PictureContainer.className = 'picture-container';
     const detailLike= document.createElement('div');
     const heartRed = document.createElement('img');
 
-    // document.getElementById('like-button').addEventListener("click",function()  {
-    //     fetch(pictures.likes)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             const postTitle = data.post.titles;
-    //             const likeCount = data.likes.likes;
-    //
-    //             document.getElementById('like-count').innerHTML = likeCount;
-    //
-    //             document.getElementById('')
-    //
-    //             console.log(postTitle)
-    //
-    //
-    //         })
-    //     likeCount++;
-    //     document.getElementById('like-count').innerText = likeCount;
-    //
-    // });
 
     heartRed.className = 'heart-detail';
     heartRed.src = "src/assets/icons/heart-solid.svg";
     detailLike.textContent = picture.likes ;
     detailLike.className = 'detail-like';
+    // heartRed.addEventListener('click', function (){
+        const handleLike = function (){
+        console.log('heart clicked')
+       likeCount+=1;
+        detailLike.textContent = likeCount;
+        heartRed.removeEventListener('click', handleLike);
+    };
+    heartRed.addEventListener('click', handleLike);
+
 
 
     const fileExtension = fileName.split('.').pop().toLowerCase();
@@ -828,6 +820,7 @@ PictureContainer.className = 'picture-container';
     const NavBar = document.createElement('div');
     NavBar.className = 'nav-bar';
     const Heart = document.createElement('img');
+
     const buttonHeader = document.createElement('div');
     buttonHeader.className='button-header';
     const Tjm = document.createElement('span');
