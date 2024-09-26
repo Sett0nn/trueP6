@@ -630,6 +630,15 @@ const data = {
         }
     ]
 }
+let navBar = document.getElementById("nav-bar");
+let totalLikeCount = 0;
+const totalLikeDisplay = document.createElement('div');
+totalLikeDisplay.className = 'total-Like';
+totalLikeDisplay.textContent = `Total likes: 0`;
+navBar.appendChild(totalLikeDisplay);
+
+
+
 console.log(data.media[0].likes)
 data.media[0].likes++
 console.log(data.media[0].likes)
@@ -785,7 +794,9 @@ PictureContainer.className = 'picture-container';
        likeCount+=1;
         detailLike.textContent = likeCount;
         heartRed.removeEventListener('click', handleLike);
-    };
+            totalLikeDisplay.textContent = `Total likes: ${++totalLikeCount}`;
+
+        };
     heartRed.addEventListener('click', handleLike);
 
 
@@ -827,7 +838,11 @@ PictureContainer.className = 'picture-container';
     Tjm.textContent = "300€/jour"
 
     const photoList= document.createElement('div');
-    // photolist.getElementById = 'photo-list';
+    photoList.className='photo-list';
+
+
+
+
 
 
 
@@ -850,7 +865,7 @@ PictureContainer.className = 'picture-container';
 
 
 
-    containerPhoto.appendChild(PictureContainer);
+                containerPhoto.appendChild(PictureContainer);
     PictureContainer.appendChild(pictureDetails);
     pictureDetails.appendChild(detailTitle);
     likeDetails.appendChild(detailLike);
@@ -901,6 +916,12 @@ PictureContainer.className = 'picture-container';
 });
 
 
+
+Array.from(pictures).forEach(function(picture) {
+    totalLikeCount += picture.likes;
+    totalLikeDisplay.textContent = `Total likes: ${totalLikeCount}`;
+
+});
 
 
 
