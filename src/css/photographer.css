@@ -207,4 +207,20 @@
 /*    display:  block;*/
 /*    overflow: hidden;*/
 
+.column-sort{
 
+}
+
+.title-sort{
+
+}
+
+.sort-class{
+    display: flex;
+    flex-direction: row;
+    gap: 38px;
+}
+
+#sort-like{
+
+}

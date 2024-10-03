@@ -35,8 +35,15 @@
 
         </div>
     </div>
-
-
+<!--    <select name=""-->
+<div class="sort-class">
+<div class="title-sort">Trier par </div>
+    <select name="pets" id="pet-select" onchange="sortPictures(this.value)">
+        <option value="likes">Popularity</option>
+        <option value="date">Date</option>
+        <option value="title">Title</option>
+    </select>
+</div>
     <div id="container-photo">
 <!--        <div class="picture-container">-->
 <!--            <img class="picture-image" src="src/assets/images/243/Travel_Lonesome.jpg" alt="Lonesome">-->
