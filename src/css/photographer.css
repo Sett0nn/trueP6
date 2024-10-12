@@ -224,3 +224,40 @@
 #sort-like{
 
 }
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background-color: white;
+   box-shadow: #FAFAFA;
+    border-radius: 3px;
+    padding: 20px;
+
+}
+
+.modal_close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+.modal_close svg{
+    width: 20px;
+    height: 20px;
+}

@@ -8,10 +8,28 @@
     <title>Fisheye - photographe </title>
 </head>
 <body>
+
+
+<!--chaque image a besoin d'un lien ( for each) cliquable pour aller dans modal) -->
+<div class="overlay"></div>
+<div class="My-Modal" class="modal">
+    <div class="modal_close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+    </div>
+<div class="modal-content">
+    <button class="modal_close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+    </button>
+
+
+</div>
+</div>
 <header>
     <img src="src/assets/images/logo.png" class="logo" alt=""/>
 </header>
-<main id="main">
+<div id="main">
     <div class="photographer-form">
         <div class="header-form">
 
@@ -62,7 +80,7 @@
 
     </div>
 
-</main>
+</div>
 <div id="contact_modal">
     <div class="modal">
         <header>
@@ -97,5 +115,6 @@
 
 <script src="src/scripts/pages/photographer.js"></script>
 <script src="src/scripts/utils/contactForm.js"></script>
+<script src="src/scripts/pages/lightboxmodal.js"></script>
 </body>
 </html>

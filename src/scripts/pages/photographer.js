@@ -991,6 +991,10 @@ Array.from(pictures).forEach(function(picture) {
 
 });
 
+
+
+
+
 // showPictures()
 
 
