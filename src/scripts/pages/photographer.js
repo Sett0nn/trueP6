@@ -28,7 +28,7 @@
 
 const params = new URLSearchParams(window.location.search);
 const photographId = parseInt(params.get('photographerId'));
-// console.log(photographId, params.get('photographerId'));
+
 
 
 
@@ -632,6 +632,9 @@ const data = {
         }
     ]
 }
+
+window.photographers=data;
+
 let navBar = document.getElementById("nav-bar");
 let totalLikeCount = 0;
 const totalLikeDisplay = document.createElement('div');
@@ -674,6 +677,7 @@ const photographInfo = data.photographers.find(element => element.id === photogr
 photographDetails.className = 'photograph-details';
     const headerName = document.createElement("div");
     headerName.className = 'header-name';
+    console.log(photographInfo);
     headerName.textContent = photographInfo.name;
     // photographerHeader.appendChild(photographDetails);
 photographerForm.appendChild(headerName);

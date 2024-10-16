@@ -246,7 +246,12 @@
    box-shadow: #FAFAFA;
     border-radius: 3px;
     padding: 20px;
+    transform: translateY(100vw);
 
+}
+
+.modal--open {
+    transform: inital;
 }
 
 .modal_close {
@@ -260,4 +265,33 @@
 .modal_close svg{
     width: 20px;
     height: 20px;
+}
+
+.carouselModal{
+    width: 2140px;
+    height: 2140px;
+    position: absolute;
+}
+
+#carouselImage{
+    width: 1000px;
+}
+
+.carousel-content {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 100px;
+    margin: 15px;
+}
+
+.exit {
+    font-size: xxx-large;
+    font-weight: bold;
+    margin: 15px;
 }

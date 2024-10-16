@@ -9,78 +9,103 @@
 </head>
 <body>
 
+<div class="carouselModal">
+
+
+    <span class="close">&times;</span>
+    <div class="carousel-content">
+        <div class="arrow"><</div>
+        <img id="carouselImage" src="src/assets/images/930/Architecture_Cross_Bar.jpg" alt="carousel image">
+        <div class="exit">X</div>
+        <div class="arrow">></div>
+    </div>
+</div>
 
 <!--chaque image a besoin d'un lien ( for each) cliquable pour aller dans modal) -->
-<div class="overlay"></div>
-<div class="My-Modal" class="modal">
-    <div class="modal_close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-    </svg>
+<div class="overlay">
+    <div class="My-Modal" class="modal">
+        <div class="modal_close">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+            </svg>
+        </div>
+        <div class="modal-content">
+            <button class="modal_close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
     </div>
-<div class="modal-content">
-    <button class="modal_close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-    </svg>
-    </button>
 
 
+    <div class="carousel-container">
+        <div class="carousel"></div>
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <button class="next" onclick="changeImage(1)">&#10095;</button>
+    </div>
 </div>
-</div>
+
+
+<!--</div>-->
 <header>
     <img src="src/assets/images/logo.png" class="logo" alt=""/>
 </header>
-<div id="main">
-    <div class="photographer-form">
-        <div class="header-form">
 
-        <div class="photograph-header">
-            <div class="style-button">
-            </div>
-            </div>
+<div class="first-part">
+<div class="main-content">
+    <div id="main">
+        <div class="photographer-form">
+            <div class="header-form">
 
-<!--            <div class="photograph-details">-->
-<!--                <div class="header-name"></div>-->
-<!--            <div class="location-form"> Paris </div>-->
-<!--            <div> Beau dans le quotidien </div>-->
-
+                <div class="photograph-header">
+                    <div class="style-button">
+                    </div>
                 </div>
+
+                <!--            <div class="photograph-details">-->
+                <!--                <div class="header-name"></div>-->
+                <!--            <div class="location-form"> Paris </div>-->
+                <!--            <div> Beau dans le quotidien </div>-->
+
+            </div>
 
             <div class="banner-style">
-            <div id="photographers-banner"></div>
-                </div>
+                <div id="photographers-banner"></div>
+            </div>
 
             <div id="photographers-image"></div>
-
+        </div>
         </div>
     </div>
-<!--    <select name=""-->
-<div class="sort-class">
-<div class="title-sort">Trier par </div>
-    <select name="pets" id="pet-select" onchange="sortPictures(this.value)">
-        <option value="likes">Popularity</option>
-        <option value="date">Date</option>
-        <option value="title">Title</option>
-    </select>
-</div>
+
+    <!--    <select name=""-->
+    <div class="sort-class">
+        <div class="title-sort">Trier par</div>
+        <select name="pets" id="pet-select" onchange="sortPictures(this.value)">
+            <option value="likes">Popularity</option>
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+        </select>
+    </div>
     <div id="container-photo">
-<!--        <div class="picture-container">-->
-<!--            <img class="picture-image" src="src/assets/images/243/Travel_Lonesome.jpg" alt="Lonesome">-->
-<!--            <div class="picture-details">-->
-<!--                <div> loremipsumaadadadadaa </div>-->
-<!--                <div> 10 likes</div>-->
+        <!--        <div class="picture-container">-->
+        <!--            <img class="picture-image" src="src/assets/images/243/Travel_Lonesome.jpg" alt="Lonesome">-->
+        <!--            <div class="picture-details">-->
+        <!--                <div> loremipsumaadadadadaa </div>-->
+        <!--                <div> 10 likes</div>-->
 
 
-<!--                    <source src="src/assets/images/930/Sport_Tricks_in_the_air.mp4" type="video/webm" />-->
-            </div>
-        </div>
-
-
-
-
-
+        <!--                    <source src="src/assets/images/930/Sport_Tricks_in_the_air.mp4" type="video/webm" />-->
     </div>
-
+    <div class="photo-list"></div>
+    <div id="nav-bar"></div>
 </div>
+
+
+
 <div id="contact_modal">
     <div class="modal">
         <header>
@@ -109,8 +134,7 @@
     </div>
 </div>
 
-<div class="photo-list"></div>
-<div id="nav-bar"></div>
+
 
 
 <script src="src/scripts/pages/photographer.js"></script>
