@@ -270,10 +270,11 @@
 .carouselModal{
     width: 2140px;
     height: 2140px;
-    position: absolute;
+    position: fixed;
+    display: none;
 }
 
-#carouselImage{
+.carousselImage{
     width: 1000px;
 }
 
@@ -290,8 +291,30 @@
     margin: 15px;
 }
 
+.arrow-reverse{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 100px;
+    margin: 15px;
+}
+
+
 .exit {
     font-size: xxx-large;
     font-weight: bold;
     margin: 15px;
+}
+
+.style_title {
+
+}
+
+.title-photo {
+    display: flex;
+    justify-content: center;
+}
+
+.style_second-layer{
+
 }

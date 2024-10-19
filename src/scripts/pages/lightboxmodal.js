@@ -1,4 +1,4 @@
-
+window.photographers
 
 
 
@@ -39,4 +39,47 @@ function openModal() {
     document.querySelector('overlay').style.display = 'block';
     document.querySelector('.modal').classList.remove('modal--open');
 }
+
+
+const carouselModal = document.getElementsByClassName('carouselModal')[0];
+carouselModal.className = 'carouselModal';
+const carouselContents = document.createElement('carousel-content');
+carouselContents.className = 'carousel-content';
+const close = document.createElement('close');
+close.className = 'close'
+close.textContent = 'x';
+const arrow = document.createElement('div');
+arrow.className = 'arrow';
+arrow.textContent = '<';
+const carouselImage = document.createElement('img');
+carouselImage.className = 'carousselImage';
+carouselImage.alt = "carousel image";
+const arrowReverse = document.createElement('div');
+arrowReverse.className = 'arrow';
+arrowReverse.textContent = ">";
+
+
+
+
+carouselContents.appendChild(arrow);
+carouselModal.appendChild(close);
+carouselModal.appendChild(carouselContents);
+
+
+carouselContents.appendChild(carouselImage);
+
+carouselContents.appendChild(arrowReverse);
+
+
+
+window.addEventListener('pictureClicked', (event) => {
+    const {
+        photographerId,
+        picture
+    } = event.detail;
+    carouselImage.src =  "src/assets/images/"+photographerId + "/"+ picture.image;
+
+    console.log(event.detail.picture)
+console.log("test")
+});
 

@@ -645,6 +645,8 @@ navBar.appendChild(totalLikeDisplay);
 
 
 
+
+
 // console.log(data.media[0].likes)
 data.media[0].likes++
 // console.log(data.media[0].likes)
@@ -743,22 +745,7 @@ photographerForm.appendChild(tagline)
     price.className = 'price-photographer';
 
 
-// photographerHeader.insertBefore(name, photographerHeader.firstChild);
-// name.insertAdjacentElement("afterend", img);
-// city.insertAdjacentElement("afterend", );
-// photographerHeader.appendChild(name);
-//     ListImage.appendChild(img);
-// photographerHeader.appendChild(city);
-// photographerHeader.appendChild(tagline);
-//     // listElement.appendChild(price);
 
-
-
-    // for (let i = 1; i <= 6; i++) {
-    //     document.getElementById(`picture-${i}`).src = photographInfo.img[i - 1].url;
-    //     document.getElementById(`counter-${i}-title`).textContent = photographInfo.img[i - 1].title;
-    //
-    // }
 
 
 // on veut récuperer les photos des photograph
@@ -767,18 +754,37 @@ const pictures = data.media.filter(element =>  element.photographerId === photog
 const ImagePhoto = document.getElementById("container-photo");
 const PhotoStyle = document.getElementById("photo-style");
 const containerPhoto = document.getElementById('container-photo');
-// console.log(PhotoStyle);
-// console.log(ImagePhoto);
+console.log(PhotoStyle);
+console.log(ImagePhoto);
 
 
 
 const showPictures = () => {
     pictures.forEach(picture => {
         const PictureContainer = document.createElement('div');
+        PictureContainer.id = `picture-${picture.id}`;
         PictureContainer.className = 'picture-container';
         const PictureImage = document.createElement('img');
         const fileName = picture.video || picture.image
         PictureImage.src = "src/assets/images/"+photographId+"/"+ fileName;
+
+        PictureContainer.onclick = () =>{
+            const event = new CustomEvent('pictureClicked', {
+                detail: {
+                    picture: picture,
+                    photographerId: photographId,
+                }
+            });
+            window.dispatchEvent(event)
+            console.log(PictureContainer.onclick);
+            const CarousselToShow = document.querySelector(".carouselModal");
+            CarousselToShow.style.display = 'block';
+            document.querySelector('.close').onclick = () => {
+                document.querySelector('.carouselModal').style.display = 'none';
+            };
+        };
+
+
 
 
 
@@ -919,39 +925,6 @@ const showPictures = () => {
 
 
 
-        // for (let i = 1; i <= 6; i++) {
-        //     document.getElementById(`picture-${i}`).src = photographInfo.pictures[i - 1].url;
-        //
-        //     document.getElementById(`counter-${i}-title`).textContent = photographInfo.pictures[i - 1].title;
-        //
-        //     document.getElementById(`counter-${i}-likes`).textContent = photographInfo.pictures[i - 1].likes;
-
-//     function setPicturesCounters(pictures, pictureImage) {
-//         let globalLikes = 0 ;
-//
-//         picture.forEach(pictures => {
-//             globalLikes += pictures.likes;
-//             if (pictureImage.includes(pictures.id)) {
-//                 document.getElementById(`picture-${pictures.id}`).style.opacity = ACTIVE_OPACITY;
-//             }
-//         });
-//
-//         document.getElementById(GLOBAL_COUNTER_ELEMENT_ID).textContent = globalLikes;
-//     }
-// console.log(setPicturesCounters)
-
-        // let count = 0;
-        // let output = document.getElementById("output");
-        // function countClicks() {
-        //     count = count + 1;
-        //     output.innerHTML = count;
-        // }
-        //
-        //
-        // ImagePhoto.appendChild(imgElement);
-        // pictureContainer.appendChild(imgElement);
-
-
 
 
 
@@ -999,136 +972,8 @@ Array.from(pictures).forEach(function(picture) {
 
 
 
-// showPictures()
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     fetch("src/data/photographers.json")
-//     .then(response => response.json())
-//     .then(data => {
-//         async function getPhotographerData() {
-//             console.log("test");
-//             try {
-//                 const response = await fetch("src/data/photographers.json")
-//                 console.log(response.json());
-//                 return await response.json()
-//             } catch (error) {
-//                 console.log(error)
-//             }
-//         }
-//     })
-// })
-
-
-//         function createPhotographers(getPhotographerData) {
-//             const container = document.querySelector('#container');
-//             console.log(container);
-//
-//             for (let i = 0; i < getPhotographerData.lenght; i++) {
-//                 const photographer = getPhotographerData[i];
-//                 console.log(photographer);
-//
-//                 const NameElement = document.createElement('fullname');
-//                 NameElement.className = 'photographer-name';
-//                 console.log(NameElement);
-//
-//                 const TownElement = document.creatElement("town");
-//                 TownElement.className = 'photographerTown';
-//                 console.log(TownElement);
-//
-//                 const QuoteElement = document.createElement('quote');
-//                 QuoteElement.className = 'PhotographerQuote';
-//                 console.log(QuoteElement);
-//
-//
-//                 const TjmElement = document.createElement('div');
-//                 TjmElement.className = 'photographerPrice';
-//                 console.log(TjmElement);
-//
-//             }
-//         }
-//
-//     })
-// })
-//
-// console.log(createPhotographers);
-//
-// async function getPhotographerData() {
-//     try{
-//         const response = await fetch("src/data/photographers.json");
-//         return response.json();
-//     } catch (error) {
-//         console.error(error)
-//      }
-//     }
-//
-//     ( async() => {
-//
-//      const data = await getPhotographerData();
-//      console.log(data)
-//
-//  })()
 
 
 
 
 
-
-
-
-
-
-
-//     let PhotographerData = {}
-// console.log(PhotographerData)
-// // //
-//  getPhotographerData().then(data => PhotographerData = data)
-// // //
-//
-// // // //
-// const photographerInfo = (event) => {
-//     // Fonction à définir
-//     console.log("Photographer Info:", event.target);
-// };
-//
-// document.querySelectorAll("img_position").forEach(a => {
-//     a.addEventListener('click', photographerInfo);
-//     console.log("Event Listener Added to:", a);
-// });
-//
-// function photographerInfo(event) {
-//     let photographerChoice = PhotographData.photographers.find(photographer => {
-//         return event.target.id === photographer.name.toLowerCase()
-//         return event.target.id === photographer.city.toLowerCase()
-//         return event.target.id === photographer.country.toLowerCase()
-//         return event.target.id === photographer.tagline.toLowerCase()
-//         return event.target.id === photographer.price.toLowerCase()
-//         return event.target.id === photographer.picture.toLowerCase()
-//     })}
-// //
-//     console.log(photographerChoice)
-//
-//     document.querySelector("#photographerName").textContent = `${photographerChoice.name} photographer`
-//     document.querySelector("#city").textContent = `${photographerChoice.city}`
-//     document.querySelector("#country").textContent = `${photographerChoice.country}`
-//     document.querySelector("#tagline").textContent = `${photographerChoice.tagline}`
-//     document.querySelector("#price").textContent = `${photographerChoice.price}`
-//     document.querySelector("#picture").innerHTML = `${photographerChoice.picture}`
-
-// }
-//
-
-
-
-
-
-
-
-//const photographId = document.getElementById("photograph_id");
-//const imagesIndexes = [1,2,3,4,5,6];
-//const selectIndex = null;
-
-//imagesIndexes.forEach(i =>{
-    //const image = document.createElement("img");
-    //image.src = `/`
-//})
