@@ -275,7 +275,9 @@
 }
 
 .carousselImage{
-    width: 1000px;
+    width: 600px;
+    height: 800px;
+    margin-top: 20px;
 }
 
 .carousel-content {
@@ -289,6 +291,7 @@
     justify-content: center;
     font-size: 100px;
     margin: 15px;
+    color: brown;
 }
 
 .arrow-reverse{
@@ -297,6 +300,7 @@
     justify-content: center;
     font-size: 100px;
     margin: 15px;
+    color: brown;
 }
 
 
@@ -317,4 +321,18 @@
 
 .style_second-layer{
 
+}
+
+.close{
+    font-size: xxx-large;
+    display: flex;
+    color: brown;
+}
+
+#prevBtn {
+    left: 0;
+}
+
+#nextBtn {
+    right: 0;
 }

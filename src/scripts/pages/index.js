@@ -598,188 +598,172 @@ const photographers = {
 ]
 }
 
-// async function getPhotographers() {
-//     const response = await fetch('src/data/photographers.json');
-//     if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//
-//
-// function loadPhotographers() {
-//     fetch('scripts/utils/photographer.json')
-//     .then(response => response.json())
-//         .then(data => {
-//             const photographers = data.photographers;*
+const listElement = document.getElementById('photographers-list');
 
+photographers.photographers.forEach(photographer => {
+    const card = document.createElement('div');
+    card.className = 'photographer-card';
+    card.setAttribute('role', 'article');
+    card.setAttribute('aria-labelledby', `photographer-name-${photographer.id}`);
 
+    const name = document.createElement('h2');
+    name.textContent = photographer.name;
+    name.className = 'name-photographer';
+    name.id = `photographer-name-${photographer.id}`;
 
+    const img = document.createElement('img');
+    img.src = photographer.portrait;
+    img.alt = photographer.altname || `Portrait of ${photographer.name}`;
 
+    const info = document.createElement('div');
+    info.className = 'info-photographer';
 
-    const listElement = document.getElementById('photographers-list')
+    const city = document.createElement('div');
+    city.textContent = photographer.city;
+    city.className = 'city-photographer';
 
-    photographers.photographers.forEach(photographer => {
+    const tagline = document.createElement('p');
+    tagline.textContent = photographer.tagline;
+    tagline.className = 'tagline-photographer';
 
+    const price = document.createElement('p');
+    price.textContent = `Prix: $${photographer.price}/jour`;
+    price.className = 'price-photographer';
 
+    info.appendChild(name);
+    info.appendChild(city);
+    info.appendChild(tagline);
+    info.appendChild(price);
 
+    card.appendChild(img);
+    card.appendChild(info);
 
+    listElement.appendChild(card);
+});
 
-        const card = document.createElement('div');
-        card.className = 'photographer-card';
+// Lightbox modal setup
+let currentIndex = 0;
 
-        const name = document.createElement('h2');
-        name.textContent = photographer.name;
-        name.className ='name-photographer';
+function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxContent();
+    document.getElementById('lightbox-modal').style.display = 'flex';
+    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'false');
+}
 
-        const img = document.createElement('img');
-        img.src = photographer.portrait;
-        img.alt = `Portrait de ${photographer.name}`;
+function closeLightbox() {
+    document.getElementById('lightbox-modal').style.display = 'none';
+    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'true');
+}
 
-        const info = document.createElement('div');
-        info.className = 'info-photographer'
+function nextImage() {
+    currentIndex = (currentIndex + 1) % photographers.media.length;
+    updateLightboxContent();
+}
 
-        const city = document.createElement('div');
-        city.textContent = photographer.city;
-        city.className = 'city-photographer';
+function prevImage() {
+    currentIndex = (currentIndex - 1 + photographers.media.length) % photographers.media.length;
+    updateLightboxContent();
+}
 
-        const tagline = document.createElement('p');
-        tagline.textContent = photographer.tagline;
-        tagline.className = 'tagline-photographer';
+function updateLightboxContent() {
+    const picture = photographers.media[currentIndex];
+    const lightboxContent = document.getElementById('lightbox-content');
+    const fileName = picture.video || picture.image;
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
 
-        const price = document.createElement('p');
-        price.textContent = `Prix: $${photographer.price}/jour`;
-        price.className = 'price-photographer';
+    if (typeMedia === "VIDEO") {
+        lightboxContent.innerHTML = `
+            <video controls aria-label="${picture.title}">
+                <source src="src/assets/images/${picture.photographerId}/${fileName}" type="video/${fileExtension}">
+            </video>
+        `;
+    } else {
+        lightboxContent.innerHTML = `
+            <img src="src/assets/images/${picture.photographerId}/${fileName}" alt="${picture.title}">
+        `;
+    }
+    document.getElementById('lightbox-title').textContent = picture.title;
+}
 
+// Add this HTML structure at the end of your existing HTML body
+const lightboxHTML = `
+    <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true" aria-labelledby="lightbox-title">
+        <button class="close-button" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+        <button class="prev-button" onclick="prevImage()" aria-label="Previous image">&#10094;</button>
+        <div class="lightbox-content-wrapper">
+            <div id="lightbox-content"></div>
+            <p id="lightbox-title"></p>
+        </div>
+        <button class="next-button" onclick="nextImage()" aria-label="Next image">&#10095;</button>
+    </div>
+`;
 
+document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
+// Add this CSS to your stylesheet
+const lightboxCSS = `
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
 
-        // info.appendChild(card);
-        info.appendChild(name);
-        info.appendChild(city);
-        info.appendChild(tagline);
-        info.appendChild(price);
+    .lightbox-content-wrapper {
+        max-width: 80%;
+        max-height: 80%;
+        position: relative;
+    }
 
+    #lightbox-content img,
+    #lightbox-content video {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+    }
 
-        card.appendChild(img);
-        card.appendChild(info);
+    #lightbox-title {
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+    }
 
-        listElement.appendChild(card);
+    .close-button,
+    .prev-button,
+    .next-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        position: absolute;
+    }
 
-    });
-// })
-//         .catch(error => console.log(error));
-// }
-// console.log(photographers);
-// document.addEventListener('DOMContentLoaded', loadPhotographers);
-//
-//         listItem.textContent = photographer.name;
-//       listElement.appendChild(listItem);
-//         });
+    .close-button {
+        top: 10px;
+        right: 20px;
+    }
 
+    .prev-button {
+        left: 20px;
+        top: 50%;
+    }
 
-    // const data = await photographers.json();
-    // const photographerData = data.photographers;
-    // console.log(photographerData);
-    //
-    //
-    // const params = new URLSearchParams(window.location.search);
-    // const photographersId = parseInt(params.get('photographers_id'));
-    // const container = document.querySelector('photographers-container');
+    .next-button {
+        right: 20px;
+        top: 50%;
+    }
+`;
 
-    //
-    // for (let i = 0; i < photographerData.length; i++) {
-    //
-    //     const photographer = photographerData[i];
-    //     console.log(photographer);
-    //
-    //     const photographerDiv = document.createElement('div');
-    //     photographerDiv.className = 'photographer-container';
-    //     console.log(photographerDiv);
-    //
-    //     const nameElement = document.createElement("div");
-    //     nameElement.className = 'name';
-    //     nameElement.textContent = photographer.name;
-    //     console.log(nameElement);
-    //
-    //
-    //     const townElement = document.creatElement("div");
-    //     townElement.className = 'town';
-    //     townElement.textContent = photographer.localisation;
-    //     console.log(townElement);
-    //
-    //     let profilElement = document.createElement("img")
-    //     profilElement.className = 'profil';
-    //     profilElement.src = photographer.url
-    //     console.log(profilElement);
-    //
-    //     // let TjmElement = document.createElementbyId('price');
-    //
-    //     photographerDiv.appendChild(nameElement);
-    //     photographerDiv.appendChild(townElement);
-    //     photographerDiv.appendChild(profilElement);
-    //
-    //     container.appendChild(photographerDiv);
-
-
-//     }
-// }
-// getPhotographers()
-
-
-// fetch('scripts/utils/photographer.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         const params = new URLSearchParams(window.location.search);
-//         const photographId = parseInt(params.get('photograph_id'));
-//         let photographInfo = data.find(element => element.id === photographId);
-
-
-//     let nameElement = document.getElementById("fullname")
-//     nameElement.textContent = photographInfo.fullname;
-//
-//     let townElement = document.getElementById("town")
-//     townElement.textContent = photographInfo.localisation;
-//
-//     let profilElement = document.getElementById("profil")
-//     profilElement.src = photographInfo.url
-//
-//     if    (!response.ok){
-//         throw new Error('Network response was not ok ' + response.statuText);
-//     }
-// });
-
-
-//     async function displayData(photographers) {
-//         const photographersSection = document.querySelector(".photographer_section");
-//
-//         photographers.forEach((photographer) => {
-//             const photographerModel = photographerTemplate(photographer);
-//             const userCardDOM = photographerModel.getUserCardDOM();
-//             photographersSection.appendChild(userCardDOM);
-//         });
-//     }
-//
-//     async function init() {
-//         // Récupère les datas des photographes
-//         const {photographers} = await getPhotographers();
-//         displayData(photographers);
-//     }
-//
-//     init();
-// }
-//
-// const data = [
-//     {
-//         id : 1,
-//         name: "kevin",
-//         city: "Paris",
-//     },
-//     {
-//         id: 2,
-//         name: "tommy",
-//         city: "Athis",
-//     },
-// ]
-// console.log(data)
-//
-// document.createElement("div");
-
+// Add the CSS to the document
+const styleElement = document.createElement('style');
+styleElement.textContent = lightboxCSS;
+document.head.appendChild(styleElement);

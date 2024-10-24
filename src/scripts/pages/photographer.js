@@ -25,9 +25,9 @@
 //        })
 // })
 
-
 const params = new URLSearchParams(window.location.search);
 const photographId = parseInt(params.get('photographerId'));
+
 
 
 
@@ -638,10 +638,13 @@ window.photographers=data;
 let navBar = document.getElementById("nav-bar");
 let totalLikeCount = 0;
 const totalLikeDisplay = document.createElement('div');
+// const tjmDisplay = document.createElement('div');
+// tjmDisplay.className = 'tjmDisplay'
+// tjmDisplay. textContent = photographInfo.price;
 totalLikeDisplay.className = 'total-Like';
 totalLikeDisplay.textContent = `Total likes: 0`;
 navBar.appendChild(totalLikeDisplay);
-
+// navBar.appendChild(tjmDisplay);
 
 
 
@@ -760,7 +763,7 @@ console.log(ImagePhoto);
 
 
 const showPictures = () => {
-    pictures.forEach(picture => {
+    pictures.forEach((picture, index) => {
         const PictureContainer = document.createElement('div');
         PictureContainer.id = `picture-${picture.id}`;
         PictureContainer.className = 'picture-container';
@@ -768,28 +771,9 @@ const showPictures = () => {
         const fileName = picture.video || picture.image
         PictureImage.src = "src/assets/images/"+photographId+"/"+ fileName;
 
-        PictureContainer.onclick = () =>{
-            const event = new CustomEvent('pictureClicked', {
-                detail: {
-                    picture: picture,
-                    photographerId: photographId,
-                }
-            });
-            window.dispatchEvent(event)
-            console.log(PictureContainer.onclick);
-            const CarousselToShow = document.querySelector(".carouselModal");
-            CarousselToShow.style.display = 'block';
-            document.querySelector('.close').onclick = () => {
-                document.querySelector('.carouselModal').style.display = 'none';
-            };
-        };
-
-
-
-
-
-
-
+        PictureImage.setAttribute('role', 'button');
+        PictureImage.setAttribute('aria-label', `Open lightbox for ${picture.title}`);
+        PictureImage.addEventListener('click', () => openLightbox(index));
 
         PictureImage.alt = picture.title;
         const pictureDetails = document.createElement('div');
@@ -977,3 +961,131 @@ Array.from(pictures).forEach(function(picture) {
 
 
 
+
+// Add these new functions and elements for the lightbox
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxContent();
+    document.getElementById('lightbox-modal').style.display = 'flex';
+    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'false');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox-modal').style.display = 'none';
+    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'true');
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % pictures.length;
+    updateLightboxContent();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
+    updateLightboxContent();
+}
+
+function updateLightboxContent() {
+    const picture = pictures[currentIndex];
+    const lightboxContent = document.getElementById('lightbox-content');
+    const fileName = picture.video || picture.image;
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
+
+    if (typeMedia === "VIDEO") {
+        lightboxContent.innerHTML = `
+            <video controls aria-label="${picture.title}">
+                <source src="src/assets/images/${photographId}/${fileName}" type="video/${fileExtension}">
+            </video>
+        `;
+    } else {
+        lightboxContent.innerHTML = `
+            <img src="src/assets/images/${photographId}/${fileName}" alt="${picture.title}">
+        `;
+    }
+    document.getElementById('lightbox-title').textContent = picture.title;
+}
+
+// Add this HTML structure at the end of your existing HTML body
+const lightboxHTML = `
+    <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true" aria-labelledby="lightbox-title">
+        <button class="close-button" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+        <button class="prev-button" onclick="prevImage()" aria-label="Previous image">&#10094;</button>
+        <div class="lightbox-content-wrapper">
+            <div id="lightbox-content"></div>
+            <p id="lightbox-title"></p>
+        </div>
+        <button class="next-button" onclick="nextImage()" aria-label="Next image">&#10095;</button>
+    </div>
+`;
+
+document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+
+// Add this CSS to your stylesheet
+const lightboxCSS = `
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox-content-wrapper {
+        max-width: 80%;
+        max-height: 80%;
+        position: relative;
+    }
+
+    #lightbox-content img,
+    #lightbox-content video {
+        max-width: 100%;
+        max-height: 70vh;
+        object-fit: contain;
+    }
+
+    #lightbox-title {
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .close-button,
+    .prev-button,
+    .next-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    .close-button {
+        top: 10px;
+        right: 20px;
+    }
+
+    .prev-button {
+        left: 20px;
+        top: 50%;
+    }
+
+    .next-button {
+        right: 20px;
+        top: 50%;
+    }
+`;
+
+// Add the CSS to the document
+const styleElement = document.createElement('style');
+styleElement.textContent = lightboxCSS;
+document.head.appendChild(styleElement);
