@@ -1024,66 +1024,17 @@ const lightboxHTML = `
 
 document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
-// Add this CSS to your stylesheet
-const lightboxCSS = `
-    .lightbox-modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        justify-content: center;
-        align-items: center;
-    }
+document.addEventListener("DOMContentLoaded", function() {
+    const lightboxModal = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const closeButton = document.getElementById('lightbox-close');
+    const prevButton = document.getElementById('lightbox-prev');
+    const nextButton = document.getElementById('lightbox-next');
+    let currentIndex = 0;
 
-    .lightbox-content-wrapper {
-        max-width: 80%;
-        max-height: 80%;
-        position: relative;
-    }
-
-    #lightbox-content img,
-    #lightbox-content video {
-        max-width: 100%;
-        max-height: 70vh;
-        object-fit: contain;
-    }
-
-    #lightbox-title {
-        color: white;
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .close-button,
-    .prev-button,
-    .next-button {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
-        position: absolute;
-    }
-
-    .close-button {
-        top: 10px;
-        right: 20px;
-    }
-
-    .prev-button {
-        left: 20px;
-        top: 50%;
-    }
-
-    .next-button {
-        right: 20px;
-        top: 50%;
-    }
-`;
+});
 
 // Add the CSS to the document
 const styleElement = document.createElement('style');
