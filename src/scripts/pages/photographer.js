@@ -63,14 +63,13 @@ card.className = 'photographer-card';
 
 
 const photographInfo = window.photographers.photographers.find(element => element.id === photographId)
-// console.log(photographInfo, photographId)
+
 
 
 
 
     const listElement = document.getElementById('photographers-banner');
 
-    // const ListImage = document.getElementById("photographers-image");
 
     const [photographerHeader] = document.getElementsByClassName("photograph-header");
 
@@ -118,13 +117,7 @@ Detailslocation.textContent = photographInfo.city
 photographerForm.appendChild(Detailslocation);
 
 
-    // name.className = 'header-name'
-    // console.log(photographInfo)
-    // name.textContent = photographInfo.name
-    // name.style.fontSize = '50px';
-    // name.style.color = '#D3573C' ;
-    // name.style.fontFamily = 'DM Sans'
-    // console.log(name.textContent)
+
 
 
 
