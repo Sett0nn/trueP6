@@ -605,6 +605,9 @@ photographers.photographers.forEach(photographer => {
     card.className = 'photographer-card';
     card.setAttribute('role', 'article');
     card.setAttribute('aria-labelledby', `photographer-name-${photographer.id}`);
+    card.onclick = function (){
+        window.location.href = "photographer.html?photographerId=" + photographer.id;
+    }
 
     const name = document.createElement('h2');
     name.textContent = photographer.name;
@@ -686,84 +689,3 @@ function updateLightboxContent() {
     }
     document.getElementById('lightbox-title').textContent = picture.title;
 }
-
-// Add this HTML structure at the end of your existing HTML body
-const lightboxHTML = `
-    <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true" aria-labelledby="lightbox-title">
-        <button class="close-button" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
-        <button class="prev-button" onclick="prevImage()" aria-label="Previous image">&#10094;</button>
-        <div class="lightbox-content-wrapper">
-            <div id="lightbox-content"></div>
-            <p id="lightbox-title"></p>
-        </div>
-        <button class="next-button" onclick="nextImage()" aria-label="Next image">&#10095;</button>
-    </div>
-`;
-
-document.body.insertAdjacentHTML('beforeend', lightboxHTML);
-
-// Add this CSS to your stylesheet
-const lightboxCSS = `
-    .lightbox-modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .lightbox-content-wrapper {
-        max-width: 80%;
-        max-height: 80%;
-        position: relative;
-    }
-
-    #lightbox-content img,
-    #lightbox-content video {
-        max-width: 100%;
-        max-height: 70vh;
-        object-fit: contain;
-    }
-
-    #lightbox-title {
-        color: white;
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .close-button,
-    .prev-button,
-    .next-button {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
-        position: absolute;
-    }
-
-    .close-button {
-        top: 10px;
-        right: 20px;
-    }
-
-    .prev-button {
-        left: 20px;
-        top: 50%;
-    }
-
-    .next-button {
-        right: 20px;
-        top: 50%;
-    }
-`;
-
-// Add the CSS to the document
-const styleElement = document.createElement('style');
-styleElement.textContent = lightboxCSS;
-document.head.appendChild(styleElement);

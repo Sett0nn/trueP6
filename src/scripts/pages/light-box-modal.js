@@ -1,4 +1,4 @@
-window.photographers;
+
 
 console.log(window.photographers);
 let currentphotographerId;
