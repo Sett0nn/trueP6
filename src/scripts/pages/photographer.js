@@ -92,8 +92,12 @@ const button = document.createElement('button');
 button.className = 'contact_button';
 button.textContent = 'Contactez-moi';
 button.setAttribute('aria-haspopup', 'dialog');
-button.addEventListener('click', handleContactButtonClick);
+button.addEventListener('click', () => displayModal(photographer.name));
 photographerHeader.appendChild(button);
+
+
+
+
 
 function handleContactButtonClick(event) {
     event.target.classList.add('active');
@@ -106,7 +110,7 @@ function closeModal() {
     modal.setAttribute('aria-hidden', 'true');
     modal.style.display = 'none';
     // Retirer la classe 'active' du bouton lorsque le modal est fermé
-    document.querySelector('.contact_button').classList.remove('active');
+    // document.querySelector('.contact_button').classList.remove('active');
 }
 
     const Detailslocation = document.createElement('div');
