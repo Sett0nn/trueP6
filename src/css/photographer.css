@@ -195,11 +195,13 @@
     gap: 30px;
     padding-right: 20px;
     /* padding-top: 40px; */
-    border-style: double;
+    border-style: solid;
     width: 200px;
     bottom: 0px;
     right: 0px;
     position: fixed;
+    background-color: #DB8876;
+    border-color: #DB8876;
 }
 
 /*width: 200px;*/
@@ -493,4 +495,12 @@ textarea {
 
 .contact_button:hover {
     background: #D3573C;
+}
+
+.tjm-display{
+
+}
+
+.heartblack{
+width: 17px;
 }

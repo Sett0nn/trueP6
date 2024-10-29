@@ -39,13 +39,11 @@ const photographId = parseInt(params.get('photographerId'));
 let navBar = document.getElementById("nav-bar");
 let totalLikeCount = 0;
 const totalLikeDisplay = document.createElement('div');
-// const tjmDisplay = document.createElement('div');
-// tjmDisplay.className = 'tjmDisplay'
-// tjmDisplay. textContent = photographInfo.price;
+
 totalLikeDisplay.className = 'total-Like';
 totalLikeDisplay.textContent = `Total likes: 0`;
 navBar.appendChild(totalLikeDisplay);
-// navBar.appendChild(tjmDisplay);
+
 
 
 
@@ -90,9 +88,9 @@ photographerForm.appendChild(headerName);
 
 const button = document.createElement('button');
 button.className = 'contact_button';
-button.textContent = 'Contactez-moi';
+button.textContent = 'Contactez moi';
 button.setAttribute('aria-haspopup', 'dialog');
-button.addEventListener('click', () => displayModal(photographer.name));
+button.addEventListener('click', () => displayModal(photographers.name));
 photographerHeader.appendChild(button);
 
 
@@ -202,7 +200,7 @@ const showPictures = () => {
             likeCount+=1;
             detailLike.textContent = likeCount;
             heartRed.removeEventListener('click', handleLike);
-            totalLikeDisplay.textContent = `Total likes: ${++totalLikeCount}`;
+            totalLikeDisplay.textContent = ` ${++totalLikeCount}`;
 
         };
         heartRed.addEventListener('click', handleLike);
@@ -245,10 +243,11 @@ const showPictures = () => {
 
         const buttonHeader = document.createElement('div');
         buttonHeader.className='button-header';
-        const Tjm = document.createElement('div');
-        Tjm.getElementsBy = 'nav-bar';
-        Tjm.textContent = price +" / jour";
-        navBar.appendChild(Tjm);
+        // const Tjm = document.createElement('div');
+        // Tjm.className = 'tjm';
+        // Tjm.getElementsBy = 'nav-bar';
+        // Tjm.textContent = price +" / jour";
+        // navBar.appendChild(Tjm);
 
         const photoList= document.createElement('div');
         photoList.className='photo-list';
@@ -263,7 +262,7 @@ const showPictures = () => {
         photoList.appendChild(NavBar);
         photoList.appendChild(buttonHeader);
         NavBar.appendChild(Heart);
-        buttonHeader.appendChild(Tjm);
+        // buttonHeader.appendChild(Tjm);
 
 
         // const pictureVideo = document.createElement('video');
@@ -348,15 +347,19 @@ function sortPictures(criteria) {
 sortPictures('likes');
 
 
-
-
-
+const heartblack= document.createElement('img');
+heartblack.className = 'heartblack';
+heartblack.src = "src/assets/icons/heart-black.svg";
+navBar.appendChild(heartblack)
 Array.from(pictures).forEach(function(picture) {
     totalLikeCount += picture.likes;
-    totalLikeDisplay.textContent = `Total likes: ${totalLikeCount}`;
+    totalLikeDisplay.textContent =  totalLikeCount;
 
 });
-
+const tjmDisplay = document.createElement('div');
+tjmDisplay.className = 'tjm-display'
+tjmDisplay.textContent = `${photographInfo.price}/jour`;
+navBar.appendChild(tjmDisplay);
 
 
 
