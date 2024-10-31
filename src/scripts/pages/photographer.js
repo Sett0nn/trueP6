@@ -1,29 +1,4 @@
-//Mettre le code JavaScript lié à la page photographer.html
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     fetch("trueP6/src/data/photographers.json")
-//         .then(response => response.json())
-//         .then(data => {
-//             const params = new URLSearchParams(window.location.search);
-//             const photographId = parseInt(params.get('photograph_id'));
-//            let photographInfo = data.find(element => element.id === photographId);
-//
-//
-//             let nameElement = document.getElementById("fullname")
-//             nameElement.textContent = photographInfo.fullname;
-//
-//             let townElement = document.getElementById("town")
-//             townElement.textContent = photographInfo.localisation;
-//
-//             let profilElement = document.getElementById("profil")
-//             profilElement.src = photographInfo.url;
-//
-//             let descriptionElement = document.getElementById("description")
-//             descriptionElement.textContent = photographInfo.description;
-//
-//        })
-// })
 
 const params = new URLSearchParams(window.location.search);
 const photographId = parseInt(params.get('photographerId'));
@@ -92,6 +67,34 @@ button.textContent = 'Contactez moi';
 button.setAttribute('aria-haspopup', 'dialog');
 button.addEventListener('click', () => displayModal(photographers.name));
 photographerHeader.appendChild(button);
+const closemodal = document.getElementsByClassName('close-modal')[0];
+closemodal.addEventListener('click', () => closeModal(photographers.name));
+
+
+
+function validerFormulaire() {
+    const prenom = document.getElementById("firstname").value;
+    const nom = document.getElementById("lastname").value;
+    const email = document.getElementById("email").value;
+    const messageErreur = document.getElementById("messageErreur");
+
+    // Log les valeurs des champs pour le débogage
+    console.log("Prénom :", prenom, "Nom :", nom, "Email :", email);
+
+    if (prenom === "" || nom === "" || email === "") {
+        messageErreur.textContent = "Tous les champs doivent être remplis.";
+        return false;
+    }
+
+    messageErreur.textContent = "";
+    alert("Formulaire validé !");
+
+    // Retourner à la page précédente sans soumettre le formulaire
+    window.location.href = "http://localhost:63342/trueP6/photographer.html?photographerId=" + photographId;
+
+    return true; // Le formulaire est considéré comme validé
+}
+
 
 
 function displayModal() {
@@ -99,19 +102,9 @@ function displayModal() {
     modal.style.display = "block";
 }
 
-
-function handleContactButtonClick(event) {
-    event.target.classList.add('active');
-    openModal();
-}
-
-
 function closeModal() {
-    const modal = document.getElementById('contact_modal');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.style.display = 'none';
-    // Retirer la classe 'active' du bouton lorsque le modal est fermé
-    // document.querySelector('.contact_button').classList.remove('active');
+    const modal = document.getElementById("contact_modal");
+    modal.style.display = "none";
 }
 
     const Detailslocation = document.createElement('div');
@@ -137,12 +130,6 @@ photographerForm.appendChild(Detailslocation);
     img.style.marginTop = '30px';
     photographerHeader.appendChild(img)
 
-    // const photographForm = document.getElementById('div');
-    // photographForm.
-
-    // const city = document.createElement('div');
-    // city.textContent = photographInfo.city;
-    // city.className = 'city-photographer';
 
     const tagline = document.createElement('p');
     tagline.textContent = photographInfo.tagline;
@@ -157,9 +144,9 @@ photographerForm.appendChild(tagline)
 
 
 
-// on veut récuperer les photos des photograph
+
 const pictures = window.photographers.media.filter(element =>  element.photographerId === photographId);
-// console.log(pictures)
+
 const ImagePhoto = document.getElementById("container-photo");
 const PhotoStyle = document.getElementById("photo-style");
 const containerPhoto = document.getElementById('container-photo');
@@ -212,7 +199,7 @@ const showPictures = () => {
 
         const fileExtension = fileName.split('.').pop().toLowerCase();
         const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
-        // console.log(fileExtension)
+
         if (typeMedia === "VIDEO") {
             const pictureVideo = document.createElement('video');
             pictureVideo.className = 'picture-video';
@@ -229,7 +216,7 @@ const showPictures = () => {
 
 
         } else if (typeMedia === "IMAGE") {
-            // console.log("filename",fileName);
+
             const pictureImage = document.createElement('img');
             pictureImage.className = 'picture-image';
             pictureImage.src = "src/assets/images/" + photographId + "/" + fileName;
@@ -246,11 +233,7 @@ const showPictures = () => {
 
         const buttonHeader = document.createElement('div');
         buttonHeader.className='button-header';
-        // const Tjm = document.createElement('div');
-        // Tjm.className = 'tjm';
-        // Tjm.getElementsBy = 'nav-bar';
-        // Tjm.textContent = price +" / jour";
-        // navBar.appendChild(Tjm);
+
 
         const photoList= document.createElement('div');
         photoList.className='photo-list';
@@ -265,18 +248,7 @@ const showPictures = () => {
         photoList.appendChild(NavBar);
         photoList.appendChild(buttonHeader);
         NavBar.appendChild(Heart);
-        // buttonHeader.appendChild(Tjm);
 
-
-        // const pictureVideo = document.createElement('video');
-        // pictureVideo.controls = true;
-        // pictureVideo.muted = true;
-        // pictureVideo.autoplay = true;
-        // pictureVideo.loop = true;
-        // pictureVideo.getElementById = 'picture-video';
-        // const sourceVideo = document.createElement('source');
-        // sourceVideo.src = "src/assets/images/"+photographId+"/"+ picture.video;
-        // sourceVideo.type = 'video/mp4';
 
 
 
@@ -286,8 +258,7 @@ const showPictures = () => {
         likeDetails.appendChild(detailLike);
         pictureDetails.appendChild(likeDetails);
         likeDetails.appendChild(heartRed);
-        // const ACTIVE_OPACITY = '1';
-        // const GLOBAL_COUNTER_ELEMENT_ID = 'global-likes';
+
 
 
         const sortClass = document.createElement('div');
@@ -295,8 +266,7 @@ const showPictures = () => {
         const TitleSort=document.createElement('div');
         TitleSort.className = 'title-sort';
         TitleSort.textContent = 'Trier par';
-        // const sortLike = document.getElementById("sort-like");
-        // sortLike.className = 'title-sort';
+
         const sortDate=document.createElement('div');
         sortDate.className = 'title-sort';
         const sortTitle=document.createElement('div');
@@ -304,9 +274,9 @@ const showPictures = () => {
 
         const sortBloc = document.getElementsByClassName('sort-class')
         sortBloc.className = 'sort-class';
-        // .appendChild(sortClass)
+
         sortClass.appendChild(TitleSort)
-        // sortClass.appendChild(sortLike)
+
         sortClass.appendChild(sortDate)
         sortClass.appendChild(sortTitle)
 
@@ -373,7 +343,7 @@ navBar.appendChild(tjmDisplay);
 
 
 
-// Add these new functions and elements for the lightbox
+
 
 let currentIndex = 0;
 
@@ -420,7 +390,7 @@ function updateLightboxContent() {
     document.getElementById('lightbox-title').textContent = picture.title;
 }
 
-// Add this HTML structure at the end of your existing HTML body
+
 const lightboxHTML = `
     <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true" aria-labelledby="lightbox-title">
         <button class="close-button" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
@@ -454,13 +424,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(currentIndex)
 });
 
-// // Add the CSS to the document
-// const styleElement = document.createElement('style');
-// document.head.appendChild(styleElement);
-//
-// document.getElementById('openModal').addEventListener('click', function() {
-//     document.getElementById('contact_modal').style.display = 'flex';
-// });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const modifyTitle = document.querySelector('.modal-titles');
@@ -468,13 +432,3 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(modifyTitle);
 });
 
-// const closeButton = document.getElementById('close-modal');
-// closeButton.addEventListener('click', function () {
-//     document.getElementById('close-modal').style.display = 'none';
-// });
-
-function closeButton() {
-    document.getElementById('button.close-modal').style.display = 'none';
-    document.getElementById('button.close-modal').setAttribute('aria-hidden', 'true');
-    console.log(closeButton)
-}

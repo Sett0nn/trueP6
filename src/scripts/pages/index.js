@@ -616,6 +616,7 @@ photographers.photographers.forEach(photographer => {
 
     const img = document.createElement('img');
     img.src = photographer.portrait;
+    img.style.cursor = "pointer";
     img.alt = photographer.altname || `Portrait of ${photographer.name}`;
 
     const info = document.createElement('div');
