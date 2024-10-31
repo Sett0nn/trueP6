@@ -94,7 +94,10 @@ button.addEventListener('click', () => displayModal(photographers.name));
 photographerHeader.appendChild(button);
 
 
-
+function displayModal() {
+    const modal = document.getElementById("contact_modal");
+    modal.style.display = "block";
+}
 
 
 function handleContactButtonClick(event) {
@@ -453,6 +456,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Add the CSS to the document
 const styleElement = document.createElement('style');
-styleElement.textContent = lightboxCSS;
 document.head.appendChild(styleElement);
+
+document.getElementById('openModal').addEventListener('click', function() {
+    document.getElementById('contact_modal').style.display = 'flex';
+});
+
+
 
