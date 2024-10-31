@@ -454,13 +454,27 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log(currentIndex)
 });
 
-// Add the CSS to the document
-const styleElement = document.createElement('style');
-document.head.appendChild(styleElement);
+// // Add the CSS to the document
+// const styleElement = document.createElement('style');
+// document.head.appendChild(styleElement);
+//
+// document.getElementById('openModal').addEventListener('click', function() {
+//     document.getElementById('contact_modal').style.display = 'flex';
+// });
 
-document.getElementById('openModal').addEventListener('click', function() {
-    document.getElementById('contact_modal').style.display = 'flex';
+document.addEventListener('DOMContentLoaded', () => {
+    const modifyTitle = document.querySelector('.modal-titles');
+    modifyTitle.textContent = "Contactez-moi" + " " + photographInfo.name;
+    console.log(modifyTitle);
 });
 
+// const closeButton = document.getElementById('close-modal');
+// closeButton.addEventListener('click', function () {
+//     document.getElementById('close-modal').style.display = 'none';
+// });
 
-
+function closeButton() {
+    document.getElementById('button.close-modal').style.display = 'none';
+    document.getElementById('button.close-modal').setAttribute('aria-hidden', 'true');
+    console.log(closeButton)
+}
