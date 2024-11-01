@@ -24,15 +24,15 @@ navBar.appendChild(totalLikeDisplay);
 
 
 
-// console.log(data.media[0].likes)
+
 window.photographers.media[0].likes++
-// console.log(data.media[0].likes)
+
 
 
 
 const card = document.createElement('div');
 card.className = 'photographer-card';
-// console.log(card)
+
 
 
 const photographInfo = window.photographers.photographers.find(element => element.id === photographId)
@@ -78,7 +78,7 @@ function validerFormulaire() {
     const email = document.getElementById("email").value;
     const messageErreur = document.getElementById("messageErreur");
 
-    // Log les valeurs des champs pour le débogage
+
     console.log("Prénom :", prenom, "Nom :", nom, "Email :", email);
 
     if (prenom === "" || nom === "" || email === "") {
@@ -89,10 +89,10 @@ function validerFormulaire() {
     messageErreur.textContent = "";
     alert("Formulaire validé !");
 
-    // Retourner à la page précédente sans soumettre le formulaire
+
     window.location.href = "http://localhost:63342/trueP6/photographer.html?photographerId=" + photographId;
 
-    return true; // Le formulaire est considéré comme validé
+    return true;
 }
 
 
@@ -184,7 +184,7 @@ const showPictures = () => {
         heartRed.src = "src/assets/icons/heart-solid.svg";
         detailLike.textContent = picture.likes ;
         detailLike.className = 'detail-like';
-        // heartRed.addEventListener('click', function (){
+
         const handleLike = function (){
             console.log('heart clicked')
             likeCount+=1;

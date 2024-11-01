@@ -66,8 +66,7 @@ arrowReverse.textContent = ">";
 
 
 window
-// arrow = document.querySelector('.arrow')
-// arrowReverse = document.querySelector('.arrowReverse');
+
 function ImageShown (index) {
     currentPicture = images[index];
     carouselImage.src =  "src/assets/images/"+currentphotographerId + "/"+ currentPicture.image;

@@ -645,7 +645,7 @@ photographers.photographers.forEach(photographer => {
     listElement.appendChild(card);
 });
 
-// Lightbox modal setup
+
 let currentIndex = 0;
 
 function openLightbox(index) {
