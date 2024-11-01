@@ -75,21 +75,26 @@ h1 {
 .name-photographer {
     display: flex;
     justify-content: center;
+    color: #D3573C;
 }
 
 .city-photographer{
     display: flex;
     justify-content: center;
+    color: #9E3939;
+    font-size: 20px;
+    margin: -15px;
 }
 
 .tagline-photographer{
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .price-photographer{
     display: flex;
     justify-content: center;
+    color: #757575;
 }
 
 .photographer-card img{

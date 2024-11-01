@@ -1,6 +1,6 @@
 
 console.log(window.photographers);
-let currentphotographerId;
+// let currentphotographerId;
 
 let currentPicture;
 

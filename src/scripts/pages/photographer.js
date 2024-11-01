@@ -57,7 +57,7 @@ photographDetails.className = 'photograph-details';
     headerName.className = 'header-name';
     console.log(photographInfo);
     headerName.textContent = photographInfo.name;
-    // photographerHeader.appendChild(photographDetails);
+
 photographerForm.appendChild(headerName);
 
 
@@ -78,6 +78,7 @@ function validerFormulaire() {
     const email = document.getElementById("email").value;
     const messageErreur = document.getElementById("messageErreur");
 
+console.log(validerFormulaire())
 
     console.log("Prénom :", prenom, "Nom :", nom, "Email :", email);
 
@@ -150,8 +151,7 @@ const pictures = window.photographers.media.filter(element =>  element.photograp
 const ImagePhoto = document.getElementById("container-photo");
 const PhotoStyle = document.getElementById("photo-style");
 const containerPhoto = document.getElementById('container-photo');
-console.log(PhotoStyle);
-console.log(ImagePhoto);
+
 
 
 
@@ -407,7 +407,7 @@ document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
 document.addEventListener("DOMContentLoaded", function() {
     const lightboxModal = document.getElementById('lightbox');
-    console.log(lightboxModal)
+
     const lightboxContent = document.getElementById('lightbox-content');
     console.log(lightboxContent)
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -415,11 +415,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const triggers = document.querySelectorAll('.lightbox-trigger');
     console.log(triggers)
     const closeButton = document.getElementById('lightbox-close');
-    console.log(closeButton)
     const prevButton = document.getElementById('lightbox-prev');
-    console.log(prevButton)
+
     const nextButton = document.getElementById('lightbox-next');
-    console.log(nextButton)
+
     let currentIndex = 0;
     console.log(currentIndex)
 });
