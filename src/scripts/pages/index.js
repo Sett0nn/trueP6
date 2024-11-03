@@ -598,17 +598,26 @@ const photographers = {
 ]
 }
 
+//Récupération de l'élément HTML principal
 const listElement = document.getElementById('photographers-list');
 
+//Boucle sur chaque photographe
 photographers.photographers.forEach(photographer => {
+
+    //Création de carte photographe
     const card = document.createElement('div');
     card.className = 'photographer-card';
     card.setAttribute('role', 'article');
+    //Aria-labelledby
     card.setAttribute('aria-labelledby', `photographer-name-${photographer.id}`);
+
+    //event onclick
     card.onclick = function (){
         window.location.href = "photographer.html?photographerId=" + photographer.id;
     }
 
+
+    //création personalisation des éléments du photographe
     const name = document.createElement('h2');
     name.textContent = photographer.name;
     name.className = 'name-photographer';
@@ -634,6 +643,8 @@ photographers.photographers.forEach(photographer => {
     price.textContent = `Prix: $${photographer.price}/jour`;
     price.className = 'price-photographer';
 
+
+    //Ajout des éléments dans la carte
     info.appendChild(name);
     info.appendChild(city);
     info.appendChild(tagline);
@@ -641,7 +652,7 @@ photographers.photographers.forEach(photographer => {
 
     card.appendChild(img);
     card.appendChild(info);
-
+// Carte ajouter dans l'élément principal
     listElement.appendChild(card);
 });
 

@@ -1,26 +1,17 @@
 
 
+// Récupération de l'ID photographe -> URL
 const params = new URLSearchParams(window.location.search);
 const photographId = parseInt(params.get('photographerId'));
 
 
-
-
-
-
-
-
-
+// Affichage du nombre total de likes
 let navBar = document.getElementById("nav-bar");
 let totalLikeCount = 0;
 const totalLikeDisplay = document.createElement('div');
-
 totalLikeDisplay.className = 'total-Like';
 totalLikeDisplay.textContent = `Total likes: 0`;
 navBar.appendChild(totalLikeDisplay);
-
-
-
 
 
 
@@ -34,7 +25,7 @@ const card = document.createElement('div');
 card.className = 'photographer-card';
 
 
-
+// Récupération information photographe
 const photographInfo = window.photographers.photographers.find(element => element.id === photographId)
 
 
@@ -43,24 +34,20 @@ const photographInfo = window.photographers.photographers.find(element => elemen
 
     const listElement = document.getElementById('photographers-banner');
 
-
+//en tête photographe
     const [photographerHeader] = document.getElementsByClassName("photograph-header");
-
-
     const photographerForm = document.createElement('div');
     photographerForm.className = 'photographer-form';
     photographerHeader.appendChild(photographerForm)
-
     const photographDetails = document.createElement('div');
 photographDetails.className = 'photograph-details';
     const headerName = document.createElement("div");
     headerName.className = 'header-name';
-    console.log(photographInfo);
-    headerName.textContent = photographInfo.name;
 
+    headerName.textContent = photographInfo.name;
 photographerForm.appendChild(headerName);
 
-
+//et bouton de contact
 const button = document.createElement('button');
 button.className = 'contact_button';
 button.textContent = 'Contactez moi';
@@ -121,10 +108,7 @@ Detailslocation.textContent = photographInfo.city
 photographerForm.appendChild(Detailslocation);
 
 
-
-
-
-
+//affichage des images des photographes et des détails en plus dans l'entête
     const img = document.createElement('img');
     img.src = photographInfo.portrait;
     img.alt = `Portrait de ${photographInfo.name}`;
@@ -136,7 +120,6 @@ photographerForm.appendChild(Detailslocation);
     img.style.marginTop = '30px';
     photographerHeader.appendChild(img)
 
-
     const tagline = document.createElement('p');
     tagline.textContent = photographInfo.tagline;
     tagline.className = 'tagline-photographer';
@@ -146,19 +129,9 @@ photographerForm.appendChild(tagline)
     price.textContent = `Prix: $${photographInfo.price}/jour`;
     price.className = 'price-photographer';
 
-
-
-
-
-
+//Affichage des photos des photographes
 const pictures = window.photographers.media.filter(element =>  element.photographerId === photographId);
-
-
 const containerPhoto = document.getElementById('container-photo');
-
-
-
-
 const showPictures = () => {
     pictures.forEach((picture, index) => {
         const PictureContainer = document.createElement('div');
@@ -189,8 +162,10 @@ const showPictures = () => {
         detailLike.textContent = picture.likes ;
         detailLike.className = 'detail-like';
 
+
+        // Compteur de likes
         const handleLike = function (){
-            console.log('heart clicked')
+
             likeCount+=1;
             detailLike.textContent = likeCount;
             heartRed.removeEventListener('click', handleLike);
@@ -229,8 +204,6 @@ const showPictures = () => {
         }
 
 
-
-
         const NavBar = document.createElement('div');
         NavBar.className = 'nav-bar';
         const Heart = document.createElement('img');
@@ -241,11 +214,6 @@ const showPictures = () => {
 
         const photoList= document.createElement('div');
         photoList.className='photo-list';
-
-
-
-
-
 
 
 
@@ -287,19 +255,13 @@ const showPictures = () => {
 
 
 
-
-
-
-
-
-
     });
 }
 
 
-
+//Trie des photos
 function sortPictures(criteria) {
-    console.log(criteria)
+
     if (criteria === 'likes') {
         pictures.sort(function (a, b) {
             return b.likes - a.likes;
@@ -323,7 +285,7 @@ function sortPictures(criteria) {
 
 sortPictures('likes');
 
-
+//affichage dans la navbar du coeur
 const heartblack= document.createElement('img');
 heartblack.className = 'heartblack';
 heartblack.src = "src/assets/icons/heart-black.svg";
@@ -335,22 +297,14 @@ Array.from(pictures).forEach(function(picture) {
 });
 const tjmDisplay = document.createElement('div');
 tjmDisplay.className = 'tjm-display'
-tjmDisplay.textContent = `${photographInfo.price}/jour`;
+tjmDisplay.textContent = `${photographInfo.price}€/jour`;
 navBar.appendChild(tjmDisplay);
-
-
-
-
-
-
-
-
-
-
 
 
 let currentIndex = 0;
 
+
+//Lightbox
 function openLightbox(index) {
     currentIndex = index;
     updateLightboxContent();
@@ -373,6 +327,7 @@ function prevImage() {
     updateLightboxContent();
 }
 
+//Intercation clavier lightbox
 function handleKeyboard(e) {
     switch(e.key) {
         case 'ArrowLeft':
@@ -392,7 +347,7 @@ function handleKeyboard(e) {
 
 document.addEventListener('keydown', handleKeyboard);
 
-
+// MAJ contenue de la lightbox
     function updateLightboxContent() {
         const picture = pictures[currentIndex];
         const lightboxContent = document.getElementById('lightbox-content');
@@ -429,25 +384,27 @@ document.addEventListener('keydown', handleKeyboard);
 
     document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
+
+    //Modification du titre de la modal de contact lors du chargement de la page
     document.addEventListener("DOMContentLoaded", function () {
 
 
         const lightboxContent = document.getElementById('lightbox-content');
-        console.log(lightboxContent)
+
         const lightboxTitle = document.getElementById('lightbox-title');
-        console.log(lightboxTitle)
+
         const triggers = document.querySelectorAll('.lightbox-trigger');
-        console.log(triggers)
+
 
 
         let currentIndex = 0;
-        console.log(currentIndex)
+
     });
 
 
     document.addEventListener('DOMContentLoaded', () => {
         const modifyTitle = document.querySelector('.modal-titles');
         modifyTitle.textContent = "Contactez-moi" + " " + photographInfo.name;
-        console.log(modifyTitle);
+
     });
 
