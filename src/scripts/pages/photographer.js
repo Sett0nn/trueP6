@@ -65,13 +65,14 @@ const button = document.createElement('button');
 button.className = 'contact_button';
 button.textContent = 'Contactez moi';
 button.setAttribute('aria-haspopup', 'dialog');
-button.addEventListener('click', () => displayModal(photographers.name));
+button.addEventListener('click', () => displayModal());
 photographerHeader.appendChild(button);
 const closemodal = document.getElementsByClassName('close-modal')[0];
-closemodal.addEventListener('click', () => closeModal(photographers.name));
+closemodal.addEventListener('click', () => closeModal());
 
 
 
+// eslint-disable-next-line no-unused-vars
 function validerFormulaire() {
     const prenom = document.getElementById("firstname").value.trim();
     const nom = document.getElementById("lastname").value.trim();
@@ -152,8 +153,7 @@ photographerForm.appendChild(tagline)
 
 const pictures = window.photographers.media.filter(element =>  element.photographerId === photographId);
 
-const ImagePhoto = document.getElementById("container-photo");
-const PhotoStyle = document.getElementById("photo-style");
+
 const containerPhoto = document.getElementById('container-photo');
 
 
@@ -430,7 +430,7 @@ document.addEventListener('keydown', handleKeyboard);
     document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
     document.addEventListener("DOMContentLoaded", function () {
-        const lightboxModal = document.getElementById('lightbox');
+
 
         const lightboxContent = document.getElementById('lightbox-content');
         console.log(lightboxContent)
@@ -438,10 +438,7 @@ document.addEventListener('keydown', handleKeyboard);
         console.log(lightboxTitle)
         const triggers = document.querySelectorAll('.lightbox-trigger');
         console.log(triggers)
-        const closeButton = document.getElementById('lightbox-close');
-        const prevButton = document.getElementById('lightbox-prev');
 
-        const nextButton = document.getElementById('lightbox-next');
 
         let currentIndex = 0;
         console.log(currentIndex)

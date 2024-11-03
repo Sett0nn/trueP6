@@ -646,47 +646,8 @@ photographers.photographers.forEach(photographer => {
 });
 
 
-let currentIndex = 0;
 
-function openLightbox(index) {
-    currentIndex = index;
-    updateLightboxContent();
-    document.getElementById('lightbox-modal').style.display = 'flex';
-    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'false');
-}
 
-function closeLightbox() {
-    document.getElementById('lightbox-modal').style.display = 'none';
-    document.getElementById('lightbox-modal').setAttribute('aria-hidden', 'true');
-}
 
-function nextImage() {
-    currentIndex = (currentIndex + 1) % photographers.media.length;
-    updateLightboxContent();
-}
 
-function prevImage() {
-    currentIndex = (currentIndex - 1 + photographers.media.length) % photographers.media.length;
-    updateLightboxContent();
-}
 
-function updateLightboxContent() {
-    const picture = photographers.media[currentIndex];
-    const lightboxContent = document.getElementById('lightbox-content');
-    const fileName = picture.video || picture.image;
-    const fileExtension = fileName.split('.').pop().toLowerCase();
-    const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
-
-    if (typeMedia === "VIDEO") {
-        lightboxContent.innerHTML = `
-            <video controls aria-label="${picture.title}">
-                <source src="src/assets/images/${picture.photographerId}/${fileName}" type="video/${fileExtension}">
-            </video>
-        `;
-    } else {
-        lightboxContent.innerHTML = `
-            <img src="src/assets/images/${picture.photographerId}/${fileName}" alt="${picture.title}">
-        `;
-    }
-    document.getElementById('lightbox-title').textContent = picture.title;
-}
