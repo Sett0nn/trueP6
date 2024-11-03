@@ -166,7 +166,7 @@
 
 .tagline-photographer{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .photographer-form {

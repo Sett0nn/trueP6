@@ -73,26 +73,30 @@ closemodal.addEventListener('click', () => closeModal(photographers.name));
 
 
 function validerFormulaire() {
-    const prenom = document.getElementById("firstname").value;
-    const nom = document.getElementById("lastname").value;
-    const email = document.getElementById("email").value;
+    const prenom = document.getElementById("firstname").value.trim();
+    const nom = document.getElementById("lastname").value.trim();
+    const email = document.getElementById("email").value.trim();
     const messageErreur = document.getElementById("messageErreur");
 
-console.log(validerFormulaire())
-
-    console.log("Prénom :", prenom, "Nom :", nom, "Email :", email);
-
-    if (prenom === "" || nom === "" || email === "") {
+    // Vérifie si les champs sont vides
+    if (!prenom || !nom || !email) {
         messageErreur.textContent = "Tous les champs doivent être remplis.";
+        messageErreur.classList.remove("hidden");
         return false;
     }
 
-    messageErreur.textContent = "";
+    // Vérifie le format de l'email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        messageErreur.textContent = "Veuillez entrer un email valide.";
+        messageErreur.classList.remove("hidden");
+        return false;
+    }
+
+    // Si tout est correct, redirige avec un ID de photographe fictif pour l'exemple
+    const photographId = 123; // Remplacez par la logique nécessaire pour obtenir l'ID réel
     alert("Formulaire validé !");
-
-
-    window.location.href = "http://localhost:63342/trueP6/photographer.html?photographerId=" + photographId;
-
+    window.location.href = `http://localhost:63342/trueP6/photographer.html?photographerId=${photographId}`;
     return true;
 }
 
@@ -369,29 +373,49 @@ function prevImage() {
     updateLightboxContent();
 }
 
-function updateLightboxContent() {
-    const picture = pictures[currentIndex];
-    const lightboxContent = document.getElementById('lightbox-content');
-    const fileName = picture.video || picture.image;
-    const fileExtension = fileName.split('.').pop().toLowerCase();
-    const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
+function handleKeyboard(e) {
+    switch(e.key) {
+        case 'ArrowLeft':
+            e.preventDefault();
+            prevImage();
+            break;
+        case 'ArrowRight':
+            e.preventDefault();
+            nextImage();
+            break;
+        case 'Escape':
+            e.preventDefault();
+            closeLightbox();
+            break;
+    }
+}
 
-    if (typeMedia === "VIDEO") {
-        lightboxContent.innerHTML = `
+document.addEventListener('keydown', handleKeyboard);
+
+
+    function updateLightboxContent() {
+        const picture = pictures[currentIndex];
+        const lightboxContent = document.getElementById('lightbox-content');
+        const fileName = picture.video || picture.image;
+        const fileExtension = fileName.split('.').pop().toLowerCase();
+        const typeMedia = ['mp4'].includes(fileExtension) ? "VIDEO" : "IMAGE";
+
+        if (typeMedia === "VIDEO") {
+            lightboxContent.innerHTML = `
             <video controls aria-label="${picture.title}">
                 <source src="src/assets/images/${photographId}/${fileName}" type="video/${fileExtension}">
             </video>
         `;
-    } else {
-        lightboxContent.innerHTML = `
+        } else {
+            lightboxContent.innerHTML = `
             <img src="src/assets/images/${photographId}/${fileName}" alt="${picture.title}">
         `;
+        }
+        document.getElementById('lightbox-title').textContent = picture.title;
     }
-    document.getElementById('lightbox-title').textContent = picture.title;
-}
 
 
-const lightboxHTML = `
+    const lightboxHTML = `
     <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-hidden="true" aria-labelledby="lightbox-title">
         <button class="close-button" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
         <button class="prev-button" onclick="prevImage()" aria-label="Previous image">&#10094;</button>
@@ -403,31 +427,30 @@ const lightboxHTML = `
     </div>
 `;
 
-document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+    document.body.insertAdjacentHTML('beforeend', lightboxHTML);
 
-document.addEventListener("DOMContentLoaded", function() {
-    const lightboxModal = document.getElementById('lightbox');
+    document.addEventListener("DOMContentLoaded", function () {
+        const lightboxModal = document.getElementById('lightbox');
 
-    const lightboxContent = document.getElementById('lightbox-content');
-    console.log(lightboxContent)
-    const lightboxTitle = document.getElementById('lightbox-title');
-    console.log(lightboxTitle)
-    const triggers = document.querySelectorAll('.lightbox-trigger');
-    console.log(triggers)
-    const closeButton = document.getElementById('lightbox-close');
-    const prevButton = document.getElementById('lightbox-prev');
+        const lightboxContent = document.getElementById('lightbox-content');
+        console.log(lightboxContent)
+        const lightboxTitle = document.getElementById('lightbox-title');
+        console.log(lightboxTitle)
+        const triggers = document.querySelectorAll('.lightbox-trigger');
+        console.log(triggers)
+        const closeButton = document.getElementById('lightbox-close');
+        const prevButton = document.getElementById('lightbox-prev');
 
-    const nextButton = document.getElementById('lightbox-next');
+        const nextButton = document.getElementById('lightbox-next');
 
-    let currentIndex = 0;
-    console.log(currentIndex)
-});
+        let currentIndex = 0;
+        console.log(currentIndex)
+    });
 
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const modifyTitle = document.querySelector('.modal-titles');
-    modifyTitle.textContent = "Contactez-moi" + " " + photographInfo.name;
-    console.log(modifyTitle);
-});
+    document.addEventListener('DOMContentLoaded', () => {
+        const modifyTitle = document.querySelector('.modal-titles');
+        modifyTitle.textContent = "Contactez-moi" + " " + photographInfo.name;
+        console.log(modifyTitle);
+    });
 
